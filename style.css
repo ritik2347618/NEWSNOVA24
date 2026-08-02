@@ -181,6 +181,233 @@ nav ul li a.active{
 }
 
 /* ===========================
+   HERO NEWS SECTION
+=========================== */
+
+.hero{
+    width:100%;
+    max-width:1400px;
+    margin:0 auto;
+    padding:30px 5%;
+
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:25px;
+
+    background:#f5f5f5;
+}
+
+
+/* ===========================
+   LEFT MAIN NEWS
+=========================== */
+
+.left-news{
+    position:relative;
+    height: 450px;
+    overflow:hidden;
+    border-radius:12px;
+    background:#000;
+}
+
+.left-news img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+
+/* Dark overlay */
+
+.left-news::after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    height:55%;
+
+    background:linear-gradient(
+        transparent,
+        rgba(0,0,0,.85)
+    );
+}
+
+
+/* Main news text */
+
+.left-news .overlay{
+    position:absolute;
+    left:30px;
+    right:30px;
+    bottom:30px;
+
+    color:#fff;
+    z-index:2;
+}
+
+.left-news .overlay h1{
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.left-news .overlay p{
+    font-size:15px;
+    line-height:1.7;
+    margin-bottom:18px;
+}
+
+.left-news .overlay button{
+    border:none;
+    background:#e60023;
+    color:#fff;
+
+    padding:11px 22px;
+    border-radius:5px;
+
+    font-size:14px;
+    font-weight:600;
+}
+
+.left-news .overlay button:hover{
+    background:#003399;
+}
+
+
+/* ===========================
+   RIGHT NEWS SIDEBAR
+=========================== */
+
+.right-news{
+    height: 450px;
+
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+
+/* Individual sidebar news */
+
+.small-news{
+    flex:1;
+
+    display:flex;
+    align-items:center;
+    gap:15px;
+
+    background:#fff;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    box-shadow:0 3px 12px rgba(0,0,0,.10);
+
+    transition:.3s;
+}
+
+.small-news:hover{
+    transform:translateY(-3px);
+
+    box-shadow:0 7px 18px rgba(0,0,0,.16);
+}
+
+
+/* Sidebar image */
+
+.small-news img{
+    width:130px;
+    height:95px;
+
+    object-fit:cover;
+
+    border-radius:7px;
+
+    flex-shrink:0;
+}
+
+
+/* Sidebar title */
+
+.small-news h3{
+    font-size:17px;
+    color:#003399;
+    margin-bottom:6px;
+}
+
+
+/* Sidebar description */
+
+.small-news p{
+    font-size:13px;
+    color:#666;
+    line-height:1.5;
+}
+
+
+/* ===========================
+   HERO TABLET
+=========================== */
+
+@media(max-width:900px){
+
+    .hero{
+        grid-template-columns:1fr;
+    }
+
+    .left-news{
+        height:450px;
+    }
+
+    .right-news{
+        height:auto;
+
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .small-news{
+        min-height:130px;
+    }
+}
+
+
+/* ===========================
+   HERO MOBILE
+=========================== */
+
+@media(max-width:600px){
+
+    .hero{
+        padding:15px;
+    }
+
+    .left-news{
+        height:400px;
+    }
+
+    .left-news .overlay{
+        left:20px;
+        right:20px;
+        bottom:20px;
+    }
+
+    .left-news .overlay h1{
+        font-size:24px;
+    }
+
+    .right-news{
+        grid-template-columns:1fr;
+    }
+
+    .small-news img{
+        width:110px;
+        height:85px;
+    }
+}
+
+/* ===========================
    ABOUT SECTION
 =========================== */
 
