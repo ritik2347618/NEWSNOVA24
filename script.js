@@ -1,6 +1,6 @@
 // ======================================================
-// NEWSNOVA24 - MAIN WEBSITE JAVASCRIPT
-// MongoDB API Version
+// NEWSNOVA24 - COMPLETE MAIN WEBSITE JAVASCRIPT
+// MongoDB + Search + Profiles + Mobile Menu
 // ======================================================
 
 
@@ -66,7 +66,180 @@ if (marqueeElement) {
 
 
 // ======================================================
-// 3. HIDE ALL CO-FOUNDER PROFILES
+// 3. MOBILE HAMBURGER MENU
+// ======================================================
+
+const menuToggle =
+    document.getElementById("menu-toggle");
+
+const navMenu =
+    document.getElementById("nav-menu");
+
+
+if (menuToggle && navMenu) {
+
+    menuToggle.addEventListener(
+        "click",
+        function () {
+
+            // Open / Close menu
+
+            navMenu.classList.toggle(
+                "mobile-menu-open"
+            );
+
+
+            const menuIsOpen =
+                navMenu.classList.contains(
+                    "mobile-menu-open"
+                );
+
+
+            // Accessibility
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                menuIsOpen
+            );
+
+
+            // Change ☰ into X
+
+            const menuIcon =
+                menuToggle.querySelector("i");
+
+
+            if (menuIcon) {
+
+                if (menuIsOpen) {
+
+                    menuIcon.classList.remove(
+                        "fa-bars"
+                    );
+
+                    menuIcon.classList.add(
+                        "fa-xmark"
+                    );
+
+                }
+
+                else {
+
+                    menuIcon.classList.remove(
+                        "fa-xmark"
+                    );
+
+                    menuIcon.classList.add(
+                        "fa-bars"
+                    );
+
+                }
+
+            }
+
+        }
+    );
+
+
+    // ==================================================
+    // CLOSE MENU WHEN USER CLICKS A LINK
+    // ==================================================
+
+    const navigationLinks =
+        navMenu.querySelectorAll("a");
+
+
+    navigationLinks.forEach(
+        function (link) {
+
+            link.addEventListener(
+                "click",
+                function () {
+
+                    if (window.innerWidth <= 600) {
+
+                        closeMobileMenu();
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+// ======================================================
+// 4. CLOSE MOBILE MENU FUNCTION
+// ======================================================
+
+function closeMobileMenu() {
+
+    if (!navMenu || !menuToggle) {
+
+        return;
+
+    }
+
+
+    navMenu.classList.remove(
+        "mobile-menu-open"
+    );
+
+
+    menuToggle.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+
+    const menuIcon =
+        menuToggle.querySelector("i");
+
+
+    if (menuIcon) {
+
+        menuIcon.classList.remove(
+            "fa-xmark"
+        );
+
+        menuIcon.classList.add(
+            "fa-bars"
+        );
+
+    }
+
+}
+
+
+// ======================================================
+// 5. HANDLE WINDOW RESIZE
+// ======================================================
+
+window.addEventListener(
+    "resize",
+    function () {
+
+        /*
+        Agar phone se desktop width par
+        browser resize hota hai to mobile
+        menu state reset ho jayegi.
+        */
+
+        if (window.innerWidth > 600) {
+
+            closeMobileMenu();
+
+        }
+
+    }
+);
+
+
+// ======================================================
+// 6. HIDE ALL CO-FOUNDER PROFILES
 // ======================================================
 
 function hideAllProfiles() {
@@ -83,21 +256,24 @@ function hideAllProfiles() {
 
     if (abhishekProfile) {
 
-        abhishekProfile.style.display = "none";
+        abhishekProfile.style.display =
+            "none";
 
     }
 
 
     if (ritikProfile) {
 
-        ritikProfile.style.display = "none";
+        ritikProfile.style.display =
+            "none";
 
     }
 
 
     if (praveenProfile) {
 
-        praveenProfile.style.display = "none";
+        praveenProfile.style.display =
+            "none";
 
     }
 
@@ -105,7 +281,7 @@ function hideAllProfiles() {
 
 
 // ======================================================
-// 4. ABHISHEK TIWARI PROFILE
+// 7. ABHISHEK TIWARI PROFILE
 // ======================================================
 
 function showAbhishek() {
@@ -114,7 +290,9 @@ function showAbhishek() {
 
 
     const abhishekProfile =
-        document.getElementById("abhishek");
+        document.getElementById(
+            "abhishek"
+        );
 
 
     if (!abhishekProfile) {
@@ -124,7 +302,8 @@ function showAbhishek() {
     }
 
 
-    abhishekProfile.style.display = "block";
+    abhishekProfile.style.display =
+        "block";
 
 
     abhishekProfile.scrollIntoView({
@@ -139,7 +318,7 @@ function showAbhishek() {
 
 
 // ======================================================
-// 5. RITIK KUMAR PROFILE
+// 8. RITIK KUMAR PROFILE
 // ======================================================
 
 function showRitik() {
@@ -148,7 +327,9 @@ function showRitik() {
 
 
     const ritikProfile =
-        document.getElementById("ritik");
+        document.getElementById(
+            "ritik"
+        );
 
 
     if (!ritikProfile) {
@@ -158,7 +339,8 @@ function showRitik() {
     }
 
 
-    ritikProfile.style.display = "block";
+    ritikProfile.style.display =
+        "block";
 
 
     ritikProfile.scrollIntoView({
@@ -173,7 +355,7 @@ function showRitik() {
 
 
 // ======================================================
-// 6. PRAVEEN KUMAR GUPTA PROFILE
+// 9. PRAVEEN KUMAR GUPTA PROFILE
 // ======================================================
 
 function showPraveen() {
@@ -182,7 +364,9 @@ function showPraveen() {
 
 
     const praveenProfile =
-        document.getElementById("praveen");
+        document.getElementById(
+            "praveen"
+        );
 
 
     if (!praveenProfile) {
@@ -192,7 +376,8 @@ function showPraveen() {
     }
 
 
-    praveenProfile.style.display = "block";
+    praveenProfile.style.display =
+        "block";
 
 
     praveenProfile.scrollIntoView({
@@ -207,7 +392,7 @@ function showPraveen() {
 
 
 // ======================================================
-// 7. CONTACT SECTION
+// 10. CONTACT SECTION
 // ======================================================
 
 const contactLink =
@@ -219,9 +404,7 @@ const contactLink =
 if (contactLink) {
 
     contactLink.addEventListener(
-
         "click",
-
         function (event) {
 
             event.preventDefault();
@@ -245,15 +428,73 @@ if (contactLink) {
 
             }
 
-        }
 
+            // Mobile menu close
+
+            if (window.innerWidth <= 600) {
+
+                closeMobileMenu();
+
+            }
+
+        }
     );
 
 }
 
 
 // ======================================================
-// 8. NEWS CONTAINER
+// 11. ABOUT SECTION
+// ======================================================
+
+const aboutLink =
+    document.querySelector(
+        'a[href="#about"]'
+    );
+
+
+if (aboutLink) {
+
+    aboutLink.addEventListener(
+        "click",
+        function (event) {
+
+            event.preventDefault();
+
+
+            const aboutSection =
+                document.getElementById(
+                    "about"
+                );
+
+
+            if (aboutSection) {
+
+                aboutSection.scrollIntoView({
+
+                    behavior: "smooth",
+
+                    block: "start"
+
+                });
+
+            }
+
+
+            if (window.innerWidth <= 600) {
+
+                closeMobileMenu();
+
+            }
+
+        }
+    );
+
+}
+
+
+// ======================================================
+// 12. NEWS CONTAINER
 // ======================================================
 
 const newsContainer =
@@ -263,7 +504,7 @@ const newsContainer =
 
 
 // ======================================================
-// 9. GET NEWS FROM MONGODB
+// 13. GET NEWS FROM MONGODB
 // ======================================================
 
 async function loadPublishedNews() {
@@ -311,11 +552,8 @@ async function loadPublishedNews() {
     catch (error) {
 
         console.error(
-
             "Unable to load news:",
-
             error
-
         );
 
 
@@ -335,7 +573,7 @@ async function loadPublishedNews() {
 
 
 // ======================================================
-// 10. DISPLAY NEWS ON HOMEPAGE
+// 14. DISPLAY NEWS ON HOMEPAGE
 // ======================================================
 
 function displayNews(publishedNews) {
@@ -351,7 +589,7 @@ function displayNews(publishedNews) {
 
 
     // ==================================================
-    // NO NEWS
+    // NO NEWS AVAILABLE
     // ==================================================
 
     if (publishedNews.length === 0) {
@@ -373,11 +611,10 @@ function displayNews(publishedNews) {
 
 
     // ==================================================
-    // DISPLAY ARTICLES
+    // DISPLAY EACH ARTICLE
     // ==================================================
 
     publishedNews.forEach(
-
         function (article) {
 
 
@@ -396,21 +633,19 @@ function displayNews(publishedNews) {
                 "pointer";
 
 
-            // MongoDB uses _id
+            // MongoDB Article ID
 
             newsCard.id =
                 "news-" +
                 article._id;
 
 
-            // ==========================================
+            // ==================================================
             // OPEN FULL ARTICLE
-            // ==========================================
+            // ==================================================
 
             newsCard.addEventListener(
-
                 "click",
-
                 function () {
 
                     window.location.href =
@@ -420,49 +655,80 @@ function displayNews(publishedNews) {
                         article._id;
 
                 }
-
             );
 
 
-            // ==========================================
-            // FORMAT MONGODB DATE
-            // ==========================================
+            // ==================================================
+            // ARTICLE DATE
+            // ==================================================
 
-            const articleDate =
-                new Date(
-                    article.createdAt
-                )
-                .toLocaleDateString(
-
-                    "en-IN",
-
-                    {
-
-                        day: "2-digit",
-
-                        month: "long",
-
-                        year: "numeric"
-
-                    }
-
-                );
+            let articleDate =
+                "Date unavailable";
 
 
-            // ==========================================
-            // CREATE NEWS CARD
-            // ==========================================
+            if (article.createdAt) {
+
+                const parsedDate =
+                    new Date(
+                        article.createdAt
+                    );
+
+
+                if (
+                    !Number.isNaN(
+                        parsedDate.getTime()
+                    )
+                ) {
+
+                    articleDate =
+                        parsedDate.toLocaleDateString(
+                            "en-IN",
+                            {
+                                day: "2-digit",
+                                month: "long",
+                                year: "numeric"
+                            }
+                        );
+
+                }
+
+            }
+
+
+            // ==================================================
+            // ARTICLE VALUES
+            // ==================================================
+
+            const image =
+                article.image || "";
+
+            const title =
+                article.title ||
+                "Untitled News";
+
+            const category =
+                article.category ||
+                "News";
+
+            const description =
+                article.description ||
+                "";
+
+            const author =
+                article.author ||
+                "NEWSNOVA24";
+
+
+            // ==================================================
+            // NEWS CARD HTML
+            // ==================================================
 
             newsCard.innerHTML = `
 
                 <img
-
-                    src="${article.image}"
-
-                    alt="${article.title}"
-
+                    src="${image}"
+                    alt="${title}"
                     class="news-image"
-
                 >
 
 
@@ -471,21 +737,21 @@ function displayNews(publishedNews) {
 
                     <span class="news-category">
 
-                        ${article.category}
+                        ${category}
 
                     </span>
 
 
                     <h3 class="news-headline">
 
-                        ${article.title}
+                        ${title}
 
                     </h3>
 
 
                     <p class="news-description">
 
-                        ${article.description}
+                        ${description}
 
                     </p>
 
@@ -495,7 +761,7 @@ function displayNews(publishedNews) {
 
                         <span class="news-author">
 
-                            By ${article.author}
+                            By ${author}
 
                         </span>
 
@@ -520,14 +786,13 @@ function displayNews(publishedNews) {
             );
 
         }
-
     );
 
 }
 
 
 // ======================================================
-// 11. SEARCH NEWS
+// 15. SEARCH NEWS
 // ======================================================
 
 const searchInput =
@@ -545,44 +810,44 @@ const searchButton =
 if (searchButton && searchInput) {
 
 
-    // SEARCH BUTTON
+    // ==================================================
+    // SEARCH BUTTON CLICK
+    // ==================================================
 
     searchButton.addEventListener(
-
         "click",
-
         function () {
 
             searchNews();
 
         }
-
     );
 
 
+    // ==================================================
     // ENTER KEY SEARCH
+    // ==================================================
 
     searchInput.addEventListener(
-
-        "keypress",
-
+        "keydown",
         function (event) {
 
             if (event.key === "Enter") {
+
+                event.preventDefault();
 
                 searchNews();
 
             }
 
         }
-
     );
 
 }
 
 
 // ======================================================
-// 12. SEARCH FUNCTION
+// 16. SEARCH FUNCTION
 // ======================================================
 
 function searchNews() {
@@ -595,52 +860,36 @@ function searchNews() {
 
 
     const searchValue =
-
         searchInput.value
-
             .toLowerCase()
-
             .trim();
 
 
     const newsCards =
-
         document.querySelectorAll(
-
             ".news-card"
-
         );
 
 
     newsCards.forEach(
-
         function (card) {
 
 
             const headlineElement =
-
                 card.querySelector(
-
                     ".news-headline"
-
                 );
 
 
             const categoryElement =
-
                 card.querySelector(
-
                     ".news-category"
-
                 );
 
 
             const descriptionElement =
-
                 card.querySelector(
-
                     ".news-description"
-
                 );
 
 
@@ -656,50 +905,27 @@ function searchNews() {
 
 
             const headline =
-
                 headlineElement
-
                     .innerText
-
                     .toLowerCase();
 
 
             const category =
-
                 categoryElement
-
                     .innerText
-
                     .toLowerCase();
 
 
             const description =
-
                 descriptionElement
-
                     .innerText
-
                     .toLowerCase();
 
 
             if (
-
-                headline.includes(
-                    searchValue
-                )
-
-                ||
-
-                category.includes(
-                    searchValue
-                )
-
-                ||
-
-                description.includes(
-                    searchValue
-                )
-
+                headline.includes(searchValue) ||
+                category.includes(searchValue) ||
+                description.includes(searchValue)
             ) {
 
                 card.style.display =
@@ -715,18 +941,16 @@ function searchNews() {
             }
 
         }
-
     );
 
 
-    // Scroll to Latest News
+    // ==================================================
+    // SCROLL TO LATEST NEWS
+    // ==================================================
 
     const latestNewsSection =
-
         document.getElementById(
-
             "latest-news-section"
-
         );
 
 
@@ -746,7 +970,7 @@ function searchNews() {
 
 
 // ======================================================
-// 13. LOAD NEWS WHEN WEBSITE OPENS
+// 17. LOAD NEWS WHEN WEBSITE OPENS
 // ======================================================
 
 loadPublishedNews();

@@ -33,7 +33,6 @@
 
 </head>
 
-
 <body>
 
 
@@ -47,19 +46,19 @@
 
     <div class="social">
 
-        <a href="#">
+        <a href="#" aria-label="Facebook">
             <i class="fab fa-facebook-f"></i>
         </a>
 
-        <a href="#">
+        <a href="#" aria-label="Instagram">
             <i class="fab fa-instagram"></i>
         </a>
 
-        <a href="#">
+        <a href="#" aria-label="X">
             <i class="fab fa-x-twitter"></i>
         </a>
 
-        <a href="#">
+        <a href="#" aria-label="YouTube">
             <i class="fab fa-youtube"></i>
         </a>
 
@@ -89,12 +88,14 @@
         <input
             type="text"
             placeholder="Search News..."
+            aria-label="Search News"
         >
 
-        <button type="button">
-
+        <button
+            type="button"
+            aria-label="Search"
+        >
             <i class="fas fa-search"></i>
-
         </button>
 
     </div>
@@ -104,11 +105,35 @@
 
 <!-- =====================================================
      NAVIGATION
+     Desktop + Mobile Hamburger Menu
 ===================================================== -->
 
-<nav>
+<nav class="main-nav">
 
-    <ul>
+    <!-- MOBILE NAVIGATION HEADER -->
+
+    <div class="mobile-nav-header">
+
+        <span class="mobile-brand">
+            NEWSNOVA24
+        </span>
+
+        <button
+            type="button"
+            class="menu-toggle"
+            id="menu-toggle"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+        >
+            <i class="fas fa-bars"></i>
+        </button>
+
+    </div>
+
+
+    <!-- NAVIGATION LINKS -->
+
+    <ul id="nav-menu">
 
         <li>
             <a href="#" class="active">Home</a>
@@ -170,7 +195,6 @@
     </span>
 
     <marquee>
-
         Welcome to NEWSNOVA24 |
         India |
         World |
@@ -178,7 +202,6 @@
         Sports |
         Business |
         Politics
-
     </marquee>
 
 </section>
@@ -197,7 +220,7 @@
 
         <img
             src="https://picsum.photos/900/500"
-            alt="News"
+            alt="Top News"
         >
 
         <div class="overlay">
@@ -225,6 +248,8 @@
     <div class="right-news">
 
 
+        <!-- TECHNOLOGY -->
+
         <div class="small-news">
 
             <img
@@ -248,6 +273,8 @@
         </div>
 
 
+        <!-- SPORTS -->
+
         <div class="small-news">
 
             <img
@@ -269,6 +296,8 @@
 
         </div>
 
+
+        <!-- BUSINESS -->
 
         <div class="small-news">
 
@@ -292,6 +321,8 @@
         </div>
 
 
+        <!-- WORLD -->
+
         <div class="small-news">
 
             <img
@@ -312,7 +343,6 @@
             </div>
 
         </div>
-
 
     </div>
 
@@ -347,8 +377,8 @@
         >
 
             <!--
-            Admin panel se publish ki hui
-            news JavaScript ke through yahan aayegi
+                MongoDB se published news
+                JavaScript ke through yahan load hogi.
             -->
 
         </div>
@@ -392,30 +422,21 @@
         </p>
 
 
-        <!-- =============================================
+        <!-- =================================================
              OUR LEADERSHIP
-        ============================================== -->
+        ================================================== -->
 
         <h2 style="margin-top:60px;">
-
             Our Leadership
-
         </h2>
 
-
-        <!--
-        IMPORTANT:
-        Teeno Co-Founder isi ek TEAM container me hain.
-        Isliye website open hone par teeno ek hi
-        leadership list/row me show honge.
-        -->
 
         <div class="team">
 
 
-            <!-- =========================================
-                 1. ABHISHEK TIWARI
-            ========================================== -->
+            <!-- =============================================
+                 ABHISHEK TIWARI
+            ============================================== -->
 
             <div class="member-card">
 
@@ -442,9 +463,9 @@
             </div>
 
 
-            <!-- =========================================
-                 2. RITIK KUMAR
-            ========================================== -->
+            <!-- =============================================
+                 RITIK KUMAR
+            ============================================== -->
 
             <div class="member-card">
 
@@ -471,9 +492,9 @@
             </div>
 
 
-            <!-- =========================================
-                 3. PRAVEEN KUMAR GUPTA
-            ========================================== -->
+            <!-- =============================================
+                 PRAVEEN KUMAR GUPTA
+            ============================================== -->
 
             <div class="member-card">
 
@@ -499,7 +520,6 @@
 
             </div>
 
-
         </div>
 
     </div>
@@ -508,7 +528,7 @@
 
 
 <!-- =====================================================
-     RITIK KUMAR DETAILS
+     RITIK KUMAR PROFILE
 ===================================================== -->
 
 <section
@@ -543,6 +563,8 @@
     <div class="info-grid">
 
 
+        <!-- QUALIFICATION -->
+
         <div class="info-box">
 
             <h3>
@@ -557,6 +579,8 @@
         </div>
 
 
+        <!-- EXPERTISE -->
+
         <div class="info-box">
 
             <h3>
@@ -564,12 +588,14 @@
             </h3>
 
             <p>
-                
-<p>Website Management & Full Stack Development</p>
+                Website Management &
+                Full Stack Development
             </p>
 
         </div>
 
+
+        <!-- ROLE -->
 
         <div class="info-box">
 
@@ -588,6 +614,8 @@
         </div>
 
 
+        <!-- VISION -->
+
         <div class="info-box">
 
             <h3>
@@ -602,7 +630,6 @@
 
         </div>
 
-
     </div>
 
 
@@ -611,31 +638,25 @@
         <a
             href="https://www.linkedin.com/in/ritik-kumar-68846b2a2"
             target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
         >
-
             <i class="fab fa-linkedin"></i>
-
         </a>
 
 
-        <a href="#">
-
+        <a href="#" aria-label="GitHub">
             <i class="fab fa-github"></i>
-
         </a>
 
 
-        <a href="#">
-
+        <a href="#" aria-label="Email">
             <i class="fas fa-envelope"></i>
-
         </a>
 
 
-        <a href="#">
-
+        <a href="#" aria-label="Website">
             <i class="fas fa-globe"></i>
-
         </a>
 
     </div>
@@ -644,7 +665,7 @@
 
 
 <!-- =====================================================
-     ABHISHEK TIWARI DETAILS
+     ABHISHEK TIWARI PROFILE
 ===================================================== -->
 
 <section
@@ -683,6 +704,8 @@
     <div class="info-grid">
 
 
+        <!-- QUALIFICATION -->
+
         <div class="info-box">
 
             <h3>
@@ -697,6 +720,8 @@
         </div>
 
 
+        <!-- EXPERTISE -->
+
         <div class="info-box">
 
             <h3>
@@ -704,17 +729,16 @@
             </h3>
 
             <p>
-
                 1+ year of experience in news editing,
                 content management and digital journalism.
-
                 Skilled in reviewing, verifying and
                 publishing accurate and timely news.
-
             </p>
 
         </div>
 
+
+        <!-- ROLE -->
 
         <div class="info-box">
 
@@ -723,16 +747,16 @@
             </h3>
 
             <p>
-
                 Reviewing, editing and publishing news
                 while ensuring every story is accurate,
                 credible and delivered to readers
                 in a timely manner.
-
             </p>
 
         </div>
 
+
+        <!-- VISION -->
 
         <div class="info-box">
 
@@ -741,46 +765,32 @@
             </h3>
 
             <p>
-
                 To make NEWSNOVA24 one of India's
                 fastest and most trusted digital
                 news platforms.
-
             </p>
 
         </div>
-
 
     </div>
 
 
     <div class="social-links">
 
-        <a href="#">
-
+        <a href="#" aria-label="LinkedIn">
             <i class="fab fa-linkedin"></i>
-
         </a>
 
-
-        <a href="#">
-
+        <a href="#" aria-label="Facebook">
             <i class="fab fa-facebook-f"></i>
-
         </a>
 
-
-        <a href="#">
-
+        <a href="#" aria-label="Email">
             <i class="fas fa-envelope"></i>
-
         </a>
 
-
-        <a href="#">
-
+        <a href="#" aria-label="Website">
             <i class="fas fa-globe"></i>
-
         </a>
 
     </div>
@@ -789,7 +799,7 @@
 
 
 <!-- =====================================================
-     PRAVEEN KUMAR GUPTA DETAILS
+     PRAVEEN KUMAR GUPTA PROFILE
 ===================================================== -->
 
 <section
@@ -828,6 +838,8 @@
     <div class="info-grid">
 
 
+        <!-- QUALIFICATION -->
+
         <div class="info-box">
 
             <h3>
@@ -835,11 +847,14 @@
             </h3>
 
             <p>
-                B.Tech - Computer Science Engineering (AI & ML)
+                B.Tech - Computer Science Engineering
+                (AI & ML)
             </p>
 
         </div>
 
+
+        <!-- EXPERTISE -->
 
         <div class="info-box">
 
@@ -848,16 +863,16 @@
             </h3>
 
             <p>
-
                 News Editing,
                 Content Management,
                 Editorial Planning
                 and Digital Journalism.
-
             </p>
 
         </div>
 
+
+        <!-- ROLE -->
 
         <div class="info-box">
 
@@ -866,17 +881,17 @@
             </h3>
 
             <p>
-
                 Managing editorial operations,
                 reviewing news content,
                 coordinating the editorial team
                 and maintaining NEWSNOVA24's
                 publishing standards.
-
             </p>
 
         </div>
 
+
+        <!-- VISION -->
 
         <div class="info-box">
 
@@ -885,46 +900,32 @@
             </h3>
 
             <p>
-
                 To build NEWSNOVA24 into a fast,
                 credible and trusted digital
                 news platform.
-
             </p>
 
         </div>
-
 
     </div>
 
 
     <div class="social-links">
 
-        <a href="#">
-
+        <a href="#" aria-label="LinkedIn">
             <i class="fab fa-linkedin"></i>
-
         </a>
 
-
-        <a href="#">
-
+        <a href="#" aria-label="Facebook">
             <i class="fab fa-facebook-f"></i>
-
         </a>
 
-
-        <a href="#">
-
+        <a href="#" aria-label="Email">
             <i class="fas fa-envelope"></i>
-
         </a>
 
-
-        <a href="#">
-
+        <a href="#" aria-label="Website">
             <i class="fas fa-globe"></i>
-
         </a>
 
     </div>
@@ -936,29 +937,43 @@
      CONTACT SECTION
 ===================================================== -->
 
-<section class="contact-section" id="contact">
+<section
+    class="contact-section"
+    id="contact"
+>
 
     <div class="contact-container">
 
-        <h2>Contact NEWSNOVA24</h2>
+
+        <h2>
+            Contact NEWSNOVA24
+        </h2>
+
 
         <p class="contact-intro">
+
             Have a news tip, story suggestion,
             business inquiry, or feedback?
+
             Get in touch with the NEWSNOVA24 team.
+
         </p>
 
 
         <div class="contact-grid">
 
 
-            <!-- ================= EMAIL ================= -->
+            <!-- =========================================
+                 EMAIL
+            ========================================== -->
 
             <div class="contact-card">
 
                 <i class="fas fa-envelope"></i>
 
-                <h3>Email Us</h3>
+                <h3>
+                    Email Us
+                </h3>
 
                 <p>
                     For news tips, feedback and
@@ -966,40 +981,54 @@
                 </p>
 
                 <a href="mailto:contact@newsnova24.com">
+
                     <i class="fas fa-paper-plane"></i>
+
                     Send Email
+
                 </a>
 
             </div>
 
 
-            <!-- ================= PHONE ================= -->
+            <!-- =========================================
+                 PHONE
+            ========================================== -->
 
             <div class="contact-card">
 
                 <i class="fas fa-phone"></i>
 
-                <h3>Call Us</h3>
+                <h3>
+                    Call Us
+                </h3>
 
                 <p>
                     Contact our NEWSNOVA24 team
                 </p>
 
                 <a href="tel:+9198765XXXXX">
+
                     <i class="fas fa-phone"></i>
+
                     Call Now
+
                 </a>
 
             </div>
 
 
-            <!-- ================= WHATSAPP ================= -->
+            <!-- =========================================
+                 WHATSAPP
+            ========================================== -->
 
             <div class="contact-card">
 
                 <i class="fab fa-whatsapp"></i>
 
-                <h3>WhatsApp</h3>
+                <h3>
+                    WhatsApp
+                </h3>
 
                 <p>
                     Send news tips, photos,
@@ -1011,8 +1040,11 @@
                     target="_blank"
                     rel="noopener noreferrer"
                 >
+
                     <i class="fab fa-whatsapp"></i>
+
                     Chat on WhatsApp
+
                 </a>
 
             </div>
@@ -1020,31 +1052,47 @@
         </div>
 
 
-        <!-- ================= SOCIAL MEDIA ================= -->
+        <!-- =============================================
+             SOCIAL MEDIA
+        ============================================== -->
 
         <div class="contact-social">
 
-            <h3>Follow NEWSNOVA24</h3>
+            <h3>
+                Follow NEWSNOVA24
+            </h3>
+
 
             <div class="contact-social-icons">
 
-                <a href="#"
-                   aria-label="Facebook">
+                <a
+                    href="#"
+                    aria-label="Facebook"
+                >
                     <i class="fab fa-facebook-f"></i>
                 </a>
 
-                <a href="#"
-                   aria-label="Instagram">
+
+                <a
+                    href="#"
+                    aria-label="Instagram"
+                >
                     <i class="fab fa-instagram"></i>
                 </a>
 
-                <a href="#"
-                   aria-label="X">
+
+                <a
+                    href="#"
+                    aria-label="X"
+                >
                     <i class="fab fa-x-twitter"></i>
                 </a>
 
-                <a href="#"
-                   aria-label="YouTube">
+
+                <a
+                    href="#"
+                    aria-label="YouTube"
+                >
                     <i class="fab fa-youtube"></i>
                 </a>
 
