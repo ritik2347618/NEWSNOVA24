@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NEWSNOVA24 - Admin Dashboard</title>
+
+    <!-- Admin CSS -->
+    <link rel="stylesheet" href="admin.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="admin.css">
+</head>
+
+<body>
+
+    <!-- ================= ADMIN HEADER ================= -->
+
+    <header class="admin-header">
+
+        <div class="admin-logo">
+            <h1>NEWSNOVA24</h1>
+            <p>Admin Panel</p>
+        </div>
+
+        <div class="admin-header-actions">
+
+    <a href="index.html" class="view-site-btn">
+        <i class="fas fa-globe"></i>
+        View Website
+    </a>
+
+    <button type="button" id="admin-logout-btn">
+        <i class="fas fa-right-from-bracket"></i>
+        Logout
+    </button>
+
+</div>
+
+    </header>
+
+
+    <!-- ================= ADMIN CONTAINER ================= -->
+
+    <main class="admin-container">
+
+        <h2>
+            <i class="fas fa-newspaper"></i>
+            Publish New Article
+        </h2>
+
+        <p class="admin-text">
+            Add a new article to NEWSNOVA24
+        </p>
+
+
+        <!-- ================= NEWS FORM ================= -->
+
+        <form id="newsForm">
+
+
+            <!-- HEADLINE -->
+
+            <label for="newsTitle">
+                News Headline
+            </label>
+
+            <input
+                type="text"
+                id="newsTitle"
+                placeholder="Enter news headline"
+                required
+            >
+
+
+            <!-- CATEGORY -->
+
+            <label for="newsCategory">
+                News Category
+            </label>
+
+            <select id="newsCategory" required>
+
+                <option value="">
+                    Select Category
+                </option>
+
+                <option value="India">India</option>
+
+                <option value="World">World</option>
+
+                <option value="Politics">Politics</option>
+
+                <option value="Business">Business</option>
+
+                <option value="Technology">Technology</option>
+
+                <option value="Sports">Sports</option>
+
+                <option value="Entertainment">
+                    Entertainment
+                </option>
+
+                <option value="Health">Health</option>
+
+            </select>
+
+
+            <!-- AUTHOR -->
+
+            <label for="newsAuthor">
+                Author / Reporter
+            </label>
+
+            <input
+                type="text"
+                id="newsAuthor"
+                placeholder="Reporter name"
+                required
+            >
+
+
+            <!-- IMAGE -->
+
+            <label for="newsImage">
+                News Image URL
+            </label>
+
+            <input
+                type="text"
+                id="newsImage"
+                placeholder="Paste news image URL"
+                required
+            >
+
+
+            <!-- SHORT DESCRIPTION -->
+
+            <label for="newsDescription">
+                Short Description
+            </label>
+
+            <textarea
+                id="newsDescription"
+                placeholder="Write a short summary of the news..."
+                required
+            ></textarea>
+
+
+            <!-- FULL ARTICLE -->
+
+            <label for="newsContent">
+                Full News Article
+            </label>
+
+            <textarea
+                id="newsContent"
+                class="article-content"
+                placeholder="Write complete news article here..."
+                required
+            ></textarea>
+
+
+            <!-- PUBLISH BUTTON -->
+
+            <button type="submit">
+
+                <i class="fas fa-paper-plane"></i>
+
+                Publish News
+
+            </button>
+
+        </form>
+
+        <!-- ==================================================
+     MANAGE PUBLISHED NEWS
+================================================== -->
+
+<section class="manage-news-section" id="manage-news-section">
+
+    <div class="manage-news-header">
+
+        <h2 id="manage-news-title">
+            <i class="fas fa-list"></i>
+            Manage Published News
+        </h2>
+
+        <p>
+            View, edit or delete published articles.
+        </p>
+
+    </div>
+
+
+    <!-- ==========================================
+         NEWS LIST
+    =========================================== -->
+
+    <div
+        class="published-news-list"
+        id="published-news-list"
+    >
+
+        <!-- Published news JavaScript se yahan aayegi -->
+
+    </div>
+
+
+    <!-- ==========================================
+         NO NEWS MESSAGE
+    =========================================== -->
+
+    <div
+        class="admin-no-news"
+        id="admin-no-news"
+        style="display:none;"
+    >
+
+        <i class="fas fa-newspaper"></i>
+
+        <p>
+            No news has been published yet.
+        </p>
+
+    </div>
+
+</section>
+
+    </main>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="admin.js"></script>
+
+</body>
+
+</html>
