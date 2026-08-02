@@ -4,6 +4,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
+
 /* ===========================
    RESET CSS
 =========================== */
@@ -43,6 +44,7 @@ button{
     transition:.3s;
 }
 
+
 /* ===========================
    TOP BAR
 =========================== */
@@ -51,10 +53,13 @@ button{
     width:100%;
     background:#0b2c5f;
     color:#fff;
+
     display:flex;
     justify-content:space-between;
     align-items:center;
+
     padding:10px 8%;
+
     font-size:15px;
 }
 
@@ -73,6 +78,7 @@ button{
     color:#ffd700;
 }
 
+
 /* ===========================
    HEADER
 =========================== */
@@ -80,10 +86,13 @@ button{
 header{
     width:100%;
     background:#ffffff;
+
     display:flex;
     justify-content:space-between;
     align-items:center;
+
     padding:18px 8%;
+
     box-shadow:0 2px 10px rgba(0,0,0,.08);
 }
 
@@ -98,19 +107,27 @@ header{
 
 .search-box input{
     width:100%;
+
     padding:12px;
+
     border:2px solid #003399;
     border-radius:5px 0 0 5px;
+
     outline:none;
+
     font-size:16px;
 }
 
 .search-box button{
     width:60px;
+
     border:none;
+
     background:#003399;
     color:#fff;
+
     border-radius:0 5px 5px 0;
+
     font-size:18px;
 }
 
@@ -118,15 +135,19 @@ header{
     background:#e60023;
 }
 
+
 /* ===========================
    NAVIGATION
 =========================== */
 
 nav{
     width:100%;
+
     background:#003399;
+
     position:sticky;
     top:0;
+
     z-index:1000;
 }
 
@@ -142,9 +163,13 @@ nav ul li{
 
 nav ul li a{
     display:block;
+
     padding:16px 22px;
+
     color:#fff;
+
     font-weight:600;
+
     transition:.3s;
 }
 
@@ -153,32 +178,43 @@ nav ul li a.active{
     background:#e60023;
 }
 
+
 /* ===========================
    BREAKING NEWS
 =========================== */
 
 .breaking-news{
     width:100%;
+
     display:flex;
     align-items:center;
+
     background:#fff;
+
     border-top:2px solid red;
     border-bottom:2px solid red;
 }
 
 .breaking-news span{
     background:#e60023;
+
     color:#fff;
+
     padding:15px 25px;
+
     font-weight:bold;
+
     white-space:nowrap;
 }
 
 .breaking-news marquee{
     padding-left:15px;
+
     font-size:17px;
+
     color:#222;
 }
+
 
 /* ===========================
    HERO NEWS SECTION
@@ -186,12 +222,17 @@ nav ul li a.active{
 
 .hero{
     width:100%;
+
     max-width:1400px;
+
     margin:0 auto;
+
     padding:30px 5%;
 
     display:grid;
+
     grid-template-columns:2fr 1fr;
+
     gap:25px;
 
     background:#f5f5f5;
@@ -204,27 +245,35 @@ nav ul li a.active{
 
 .left-news{
     position:relative;
-    height: 450px;
+
+    height:450px;
+
     overflow:hidden;
+
     border-radius:12px;
+
     background:#000;
 }
 
 .left-news img{
     width:100%;
     height:100%;
+
     object-fit:cover;
 }
 
 
-/* Dark overlay */
+/* DARK OVERLAY */
 
 .left-news::after{
     content:"";
+
     position:absolute;
+
     left:0;
     right:0;
     bottom:0;
+
     height:55%;
 
     background:linear-gradient(
@@ -234,38 +283,47 @@ nav ul li a.active{
 }
 
 
-/* Main news text */
+/* MAIN NEWS TEXT */
 
 .left-news .overlay{
     position:absolute;
+
     left:30px;
     right:30px;
     bottom:30px;
 
     color:#fff;
+
     z-index:2;
 }
 
 .left-news .overlay h1{
     font-size:32px;
+
     margin-bottom:10px;
 }
 
 .left-news .overlay p{
     font-size:15px;
+
     line-height:1.7;
+
     margin-bottom:18px;
 }
 
 .left-news .overlay button{
     border:none;
+
     background:#e60023;
+
     color:#fff;
 
     padding:11px 22px;
+
     border-radius:5px;
 
     font-size:14px;
+
     font-weight:600;
 }
 
@@ -279,21 +337,25 @@ nav ul li a.active{
 =========================== */
 
 .right-news{
-    height: 450px;
+    height:450px;
 
     display:flex;
+
     flex-direction:column;
+
     gap:15px;
 }
 
 
-/* Individual sidebar news */
+/* SMALL NEWS */
 
 .small-news{
     flex:1;
 
     display:flex;
+
     align-items:center;
+
     gap:15px;
 
     background:#fff;
@@ -313,9 +375,6 @@ nav ul li a.active{
     box-shadow:0 7px 18px rgba(0,0,0,.16);
 }
 
-
-/* Sidebar image */
-
 .small-news img{
     width:130px;
     height:95px;
@@ -327,85 +386,22 @@ nav ul li a.active{
     flex-shrink:0;
 }
 
-
-/* Sidebar title */
-
 .small-news h3{
     font-size:17px;
+
     color:#003399;
+
     margin-bottom:6px;
 }
 
-
-/* Sidebar description */
-
 .small-news p{
     font-size:13px;
+
     color:#666;
+
     line-height:1.5;
 }
 
-
-/* ===========================
-   HERO TABLET
-=========================== */
-
-@media(max-width:900px){
-
-    .hero{
-        grid-template-columns:1fr;
-    }
-
-    .left-news{
-        height:450px;
-    }
-
-    .right-news{
-        height:auto;
-
-        display:grid;
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .small-news{
-        min-height:130px;
-    }
-}
-
-
-/* ===========================
-   HERO MOBILE
-=========================== */
-
-@media(max-width:600px){
-
-    .hero{
-        padding:15px;
-    }
-
-    .left-news{
-        height:400px;
-    }
-
-    .left-news .overlay{
-        left:20px;
-        right:20px;
-        bottom:20px;
-    }
-
-    .left-news .overlay h1{
-        font-size:24px;
-    }
-
-    .right-news{
-        grid-template-columns:1fr;
-    }
-
-    .small-news img{
-        width:110px;
-        height:85px;
-    }
-}
 
 /* ===========================
    ABOUT SECTION
@@ -413,260 +409,372 @@ nav ul li a.active{
 
 .about-section{
     padding:80px 8%;
+
     background:#f8f9fa;
 }
 
 .about-container{
     max-width:1200px;
+
     margin:auto;
+
     text-align:center;
 }
 
 .about-container h2{
     font-size:38px;
+
     color:#003399;
+
     margin-bottom:20px;
 }
 
-.about-container p{
+.about-container > p{
     font-size:18px;
+
     color:#555;
+
     line-height:30px;
+
     max-width:900px;
+
     margin:auto;
 }
 
-/* ===========================
-   TEAM
-=========================== */
+
+/* ==========================================
+   OUR LEADERSHIP - 3 CO-FOUNDERS
+========================================== */
 
 .team{
-    display:flex;
-    justify-content:center;
-    gap:40px;
-    margin-top:60px;
-    flex-wrap:wrap;
+    width:100%;
+
+    max-width:1200px;
+
+    margin:50px auto 0;
+
+    display:grid;
+
+    /*
+       Desktop/Laptop:
+       3 Co-Founders ek hi row me
+    */
+
+    grid-template-columns:repeat(3, 1fr);
+
+    gap:30px;
+
+    align-items:stretch;
 }
 
+
+/* ===========================
+   MEMBER CARD
+=========================== */
+
 .member-card{
-    width:330px;
-    background:#fff;
+    width:100%;
+
+    background:#ffffff;
+
     border-radius:15px;
+
     overflow:hidden;
+
+    padding:30px 20px;
+
     box-shadow:0 10px 25px rgba(0,0,0,.15);
-    padding:25px;
+
     transition:.4s;
+
+    text-align:center;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
 }
 
 .member-card:hover{
     transform:translateY(-10px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.20);
 }
+
+
+/* MEMBER IMAGE */
 
 .member-card img{
     width:180px;
     height:180px;
-    margin:auto;
+
+    margin:0 auto;
+
     border-radius:50%;
+
     object-fit:cover;
+
     border:5px solid #003399;
 }
 
+
+/* MEMBER NAME */
+
 .member-card h3{
     margin-top:20px;
+
     color:#003399;
+
+    font-size:22px;
 }
+
+
+/* MEMBER ROLE */
 
 .member-card p{
-    margin:15px 0;
+    margin:12px 0 20px;
+
+    color:#555;
+
+    font-size:15px;
+
+    line-height:1.6;
+
+    min-height:48px;
 }
 
+
+/* VIEW DETAILS BUTTON */
+
 .member-card button{
+    margin-top:auto;
+
     padding:12px 28px;
+
     border:none;
+
     background:#003399;
-    color:white;
+
+    color:#fff;
+
     border-radius:6px;
+
     cursor:pointer;
-    font-size:16px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    transition:.3s;
 }
 
 .member-card button:hover{
     background:#e60023;
+
+    transform:scale(1.05);
 }
 
-/* ===========================
-   PROFILE DETAILS
-=========================== */
 
-/* ===============================
-   CO-FOUNDER PREMIUM PROFILE
-================================ */
+/* ==========================================
+   CO-FOUNDER PROFILE DETAILS
+========================================== */
 
 .profile-details{
     display:none;
+
     max-width:1000px;
+
     margin:70px auto;
+
     background:#fff;
+
     padding:50px;
+
     border-radius:20px;
+
     box-shadow:0 15px 35px rgba(0,0,0,.15);
+
     text-align:center;
 }
 
 .profile-details img{
-
     width:220px;
     height:220px;
+
     border-radius:50%;
+
     object-fit:cover;
+
     border:6px solid #003399;
+
     margin:auto;
 }
 
 .profile-details h2{
-
     margin-top:25px;
-    color:#003399;
-    font-size:36px;
 
+    color:#003399;
+
+    font-size:36px;
 }
 
 .profile-details h4{
-
     color:#e60023;
-    margin:10px 0 20px;
-    font-size:22px;
 
+    margin:10px 0 20px;
+
+    font-size:22px;
 }
 
 .intro{
-
     font-size:18px;
-    color:#555;
-    margin-bottom:35px;
 
+    color:#555;
+
+    line-height:1.8;
+
+    margin-bottom:35px;
 }
 
+
+/* ===========================
+   PROFILE INFORMATION
+=========================== */
+
 .info-grid{
-
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:25px;
-    margin-top:30px;
 
+    grid-template-columns:repeat(
+        auto-fit,
+        minmax(220px,1fr)
+    );
+
+    gap:25px;
+
+    margin-top:30px;
 }
 
 .info-box{
-
     background:#f5f7fa;
+
     padding:25px;
+
     border-radius:15px;
+
     transition:.3s;
 }
 
 .info-box:hover{
-
     background:#003399;
-    color:white;
-    transform:translateY(-8px);
 
+    color:white;
+
+    transform:translateY(-8px);
 }
 
 .info-box h3{
-
     margin-bottom:12px;
-
 }
 
+
+/* ===========================
+   PROFILE SOCIAL LINKS
+=========================== */
+
 .social-links{
-
     margin-top:40px;
-
 }
 
 .social-links a{
-
     display:inline-block;
+
     width:55px;
     height:55px;
-    line-height:55px;
-    text-align:center;
-    border-radius:50%;
-    background:#003399;
-    color:white;
-    font-size:24px;
-    margin:0 10px;
-    transition:.3s;
 
+    line-height:55px;
+
+    text-align:center;
+
+    border-radius:50%;
+
+    background:#003399;
+
+    color:white;
+
+    font-size:24px;
+
+    margin:0 10px;
+
+    transition:.3s;
 }
 
 .social-links a:hover{
-
     background:#e60023;
-    transform:scale(1.15);
 
+    transform:scale(1.15);
 }
 
+
 /* ==========================================
-   NEWSNOVA24 - LATEST NEWS SECTION
+   LATEST NEWS SECTION
 ========================================== */
-
-
-/* Main Latest News Section */
 
 #latest-news-section{
     width:100%;
+
     padding:70px 8%;
+
     background:#ffffff;
 }
 
-
-/* Latest News Container */
-
 #latest-news-container{
     max-width:1200px;
+
     margin:0 auto;
 }
 
-
-/* Latest News Heading */
-
 #latest-news-title{
     font-size:34px;
+
     color:#003399;
+
     margin-bottom:35px;
+
     border-left:5px solid #e60023;
+
     padding-left:15px;
 }
 
 
-/* ==========================================
+/* ===========================
    NEWS GRID
-========================================== */
+=========================== */
 
 #news-container{
     display:grid;
+
     grid-template-columns:repeat(3, 1fr);
+
     gap:30px;
 }
 
 
-/* ==========================================
+/* ===========================
    NEWS CARD
-========================================== */
+=========================== */
 
 .news-card{
     background:#ffffff;
+
     border-radius:12px;
+
     overflow:hidden;
 
     box-shadow:0 5px 20px rgba(0,0,0,0.12);
 
     transition:0.3s;
 }
-
-
-/* News Card Hover */
 
 .news-card:hover{
     transform:translateY(-8px);
@@ -675,12 +783,13 @@ nav ul li a.active{
 }
 
 
-/* ==========================================
+/* ===========================
    NEWS IMAGE
-========================================== */
+=========================== */
 
 .news-image{
     width:100%;
+
     height:220px;
 
     object-fit:cover;
@@ -690,31 +799,29 @@ nav ul li a.active{
     transition:0.3s;
 }
 
-
-/* Image Hover Effect */
-
 .news-card:hover .news-image{
     transform:scale(1.04);
 }
 
 
-/* ==========================================
+/* ===========================
    NEWS CONTENT
-========================================== */
+=========================== */
 
 .news-content{
     padding:20px;
 }
 
 
-/* ==========================================
-   CATEGORY
-========================================== */
+/* ===========================
+   NEWS CATEGORY
+=========================== */
 
 .news-category{
     display:inline-block;
 
     background:#e60023;
+
     color:#ffffff;
 
     padding:5px 12px;
@@ -722,15 +829,16 @@ nav ul li a.active{
     border-radius:4px;
 
     font-size:13px;
+
     font-weight:600;
 
     margin-bottom:12px;
 }
 
 
-/* ==========================================
-   HEADLINE
-========================================== */
+/* ===========================
+   NEWS HEADLINE
+=========================== */
 
 .news-headline{
     font-size:20px;
@@ -744,17 +852,14 @@ nav ul li a.active{
     transition:0.3s;
 }
 
-
-/* Headline Hover */
-
 .news-card:hover .news-headline{
     color:#003399;
 }
 
 
-/* ==========================================
-   DESCRIPTION
-========================================== */
+/* ===========================
+   NEWS DESCRIPTION
+=========================== */
 
 .news-description{
     color:#666666;
@@ -765,9 +870,9 @@ nav ul li a.active{
 }
 
 
-/* ==========================================
+/* ===========================
    AUTHOR + DATE
-========================================== */
+=========================== */
 
 .news-info{
     display:flex;
@@ -789,20 +894,18 @@ nav ul li a.active{
     color:#888888;
 }
 
-
 .news-author{
     font-weight:500;
 }
-
 
 .news-date{
     white-space:nowrap;
 }
 
 
-/* ==========================================
+/* ===========================
    NO NEWS MESSAGE
-========================================== */
+=========================== */
 
 #no-news-message{
     grid-column:1 / -1;
@@ -827,8 +930,47 @@ nav ul li a.active{
 
 @media(max-width:900px){
 
+    /* HEADER */
+
+    header{
+        padding:15px 5%;
+    }
+
+
+    /* HERO */
+
+    .hero{
+        grid-template-columns:1fr;
+    }
+
+    .left-news{
+        height:450px;
+    }
+
+    .right-news{
+        height:auto;
+
+        display:grid;
+
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .small-news{
+        min-height:130px;
+    }
+
+
+    /* LEADERSHIP */
+
+    .team{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+
+    /* LATEST NEWS */
+
     #news-container{
-        grid-template-columns:repeat(2, 1fr);
+        grid-template-columns:repeat(2,1fr);
     }
 
 }
@@ -840,29 +982,549 @@ nav ul li a.active{
 
 @media(max-width:600px){
 
-    #latest-news-section{
+    /* TOP BAR */
+
+    .top-bar{
+        padding:8px 4%;
+
+        font-size:12px;
+    }
+
+    .social{
+        gap:12px;
+    }
+
+
+    /* HEADER */
+
+    header{
+        flex-direction:column;
+
+        gap:20px;
+
+        padding:15px;
+    }
+
+    .logo img{
+        width:190px;
+    }
+
+    .search-box{
+        width:100%;
+    }
+
+
+    /* NAVIGATION */
+
+    nav ul li a{
+        padding:12px 10px;
+
+        font-size:13px;
+    }
+
+
+    /* BREAKING NEWS */
+
+    .breaking-news span{
+        padding:12px 10px;
+
+        font-size:13px;
+    }
+
+    .breaking-news marquee{
+        font-size:14px;
+    }
+
+
+    /* HERO */
+
+    .hero{
+        padding:15px;
+
+        grid-template-columns:1fr;
+    }
+
+    .left-news{
+        height:400px;
+    }
+
+    .left-news .overlay{
+        left:20px;
+
+        right:20px;
+
+        bottom:20px;
+    }
+
+    .left-news .overlay h1{
+        font-size:24px;
+    }
+
+    .right-news{
+        grid-template-columns:1fr;
+    }
+
+    .small-news img{
+        width:110px;
+
+        height:85px;
+    }
+
+
+    /* ABOUT */
+
+    .about-section{
         padding:50px 5%;
     }
 
+    .about-container h2{
+        font-size:30px;
+    }
+
+    .about-container > p{
+        font-size:16px;
+
+        line-height:27px;
+    }
+
+
+    /* ==================================
+       LEADERSHIP ON MOBILE
+    ================================== */
+
+    .team{
+        grid-template-columns:1fr;
+
+        gap:25px;
+
+        margin-top:35px;
+    }
+
+    .member-card{
+        width:100%;
+
+        max-width:350px;
+
+        margin:0 auto;
+    }
+
+    .member-card img{
+        width:160px;
+
+        height:160px;
+    }
+
+
+    /* PROFILE */
+
+    .profile-details{
+        margin:40px 15px;
+
+        padding:30px 20px;
+    }
+
+    .profile-details img{
+        width:170px;
+
+        height:170px;
+    }
+
+    .profile-details h2{
+        font-size:28px;
+    }
+
+    .profile-details h4{
+        font-size:18px;
+    }
+
+    .intro{
+        font-size:15px;
+    }
+
+    .social-links a{
+        width:45px;
+
+        height:45px;
+
+        line-height:45px;
+
+        font-size:19px;
+
+        margin:5px;
+    }
+
+
+    /* LATEST NEWS */
+
+    #latest-news-section{
+        padding:50px 5%;
+    }
 
     #latest-news-title{
         font-size:28px;
     }
 
-
     #news-container{
         grid-template-columns:1fr;
     }
-
 
     .news-image{
         height:200px;
     }
 
-
     .news-info{
         flex-direction:column;
+
         align-items:flex-start;
+    }
+
+}
+
+/* ======================================================
+   NEWSNOVA24 - PREMIUM CONTACT SECTION
+====================================================== */
+
+.contact-section{
+    width:100%;
+    padding:80px 8%;
+    background:linear-gradient(135deg,#061f4a,#003399);
+    position:relative;
+    overflow:hidden;
+}
+
+/* Decorative background circles */
+
+.contact-section::before{
+    content:"";
+    position:absolute;
+    width:350px;
+    height:350px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.05);
+    top:-150px;
+    left:-100px;
+}
+
+.contact-section::after{
+    content:"";
+    position:absolute;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    background:rgba(230,0,35,0.15);
+    bottom:-150px;
+    right:-80px;
+}
+
+
+/* MAIN CONTAINER */
+
+.contact-container{
+    max-width:1200px;
+    margin:auto;
+    position:relative;
+    z-index:2;
+}
+
+
+/* CONTACT HEADING */
+
+.contact-container > h2{
+    text-align:center;
+    color:#ffffff;
+    font-size:38px;
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+
+/* Red underline */
+
+.contact-container > h2::after{
+    content:"";
+    display:block;
+    width:80px;
+    height:4px;
+    background:#e60023;
+    margin:12px auto 0;
+    border-radius:10px;
+}
+
+
+/* INTRO TEXT */
+
+.contact-intro{
+    max-width:750px;
+    margin:0 auto 45px;
+    text-align:center;
+    color:#dce6f5;
+    font-size:17px;
+    line-height:1.8;
+}
+
+
+/* ======================================================
+   CONTACT CARDS
+====================================================== */
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+
+/* INDIVIDUAL CARD */
+
+.contact-card{
+    background:#ffffff;
+    padding:35px 25px;
+    border-radius:15px;
+    text-align:center;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.18);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+
+    position:relative;
+    overflow:hidden;
+}
+
+
+/* Top red line */
+
+.contact-card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:5px;
+    background:#e60023;
+}
+
+
+/* CARD HOVER */
+
+.contact-card:hover{
+    transform:translateY(-10px);
+
+    box-shadow:
+        0 18px 40px rgba(0,0,0,0.28);
+}
+
+
+/* ======================================================
+   CONTACT ICON
+====================================================== */
+
+.contact-card > i{
+    width:75px;
+    height:75px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin:0 auto 20px;
+
+    border-radius:50%;
+
+    background:#003399;
+    color:#ffffff;
+
+    font-size:28px;
+
+    transition:.3s;
+}
+
+
+/* Icon hover */
+
+.contact-card:hover > i{
+    background:#e60023;
+    transform:scale(1.1);
+}
+
+
+/* ======================================================
+   CONTACT CARD TEXT
+====================================================== */
+
+.contact-card h3{
+    color:#003399;
+    font-size:22px;
+    margin-bottom:12px;
+}
+
+
+.contact-card p{
+    color:#666666;
+    font-size:15px;
+    line-height:1.7;
+    min-height:50px;
+    margin-bottom:20px;
+}
+
+
+/* ======================================================
+   CONTACT BUTTON
+====================================================== */
+
+.contact-card a{
+    display:inline-block;
+
+    background:#003399;
+    color:#ffffff;
+
+    padding:11px 20px;
+
+    border-radius:6px;
+
+    font-size:14px;
+    font-weight:600;
+
+    transition:.3s;
+}
+
+
+.contact-card a:hover{
+    background:#e60023;
+    transform:translateY(-2px);
+}
+
+
+/* ======================================================
+   SOCIAL MEDIA AREA
+====================================================== */
+
+.contact-social{
+    margin-top:55px;
+    text-align:center;
+}
+
+
+.contact-social h3{
+    color:#ffffff;
+    font-size:22px;
+    margin-bottom:22px;
+}
+
+
+/* SOCIAL ICON CONTAINER */
+
+.contact-social-icons{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+}
+
+
+/* SOCIAL ICON */
+
+.contact-social-icons a{
+    width:50px;
+    height:50px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#ffffff;
+    color:#003399;
+
+    border-radius:50%;
+
+    font-size:20px;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,0.20);
+
+    transition:.3s;
+}
+
+
+/* SOCIAL ICON HOVER */
+
+.contact-social-icons a:hover{
+    background:#e60023;
+    color:#ffffff;
+
+    transform:
+        translateY(-5px)
+        scale(1.08);
+}
+
+
+/* ======================================================
+   TABLET RESPONSIVE
+====================================================== */
+
+@media(max-width:900px){
+
+    .contact-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+
+/* ======================================================
+   MOBILE RESPONSIVE
+====================================================== */
+
+@media(max-width:600px){
+
+    .contact-section{
+        padding:60px 5%;
+    }
+
+
+    .contact-container > h2{
+        font-size:30px;
+    }
+
+
+    .contact-intro{
+        font-size:15px;
+        margin-bottom:35px;
+    }
+
+
+    .contact-grid{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+
+
+    .contact-card{
+        padding:30px 20px;
+    }
+
+
+    .contact-card p{
+        min-height:auto;
+    }
+
+
+    .contact-social{
+        margin-top:40px;
+    }
+
+
+    .contact-social-icons{
+        gap:12px;
+    }
+
+
+    .contact-social-icons a{
+        width:45px;
+        height:45px;
+        font-size:18px;
     }
 
 }
