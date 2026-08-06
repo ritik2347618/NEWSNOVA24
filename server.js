@@ -2,7 +2,10 @@ require("dotenv").config();
 
 const dns = require("dns");
 
-// MongoDB DNS fix
+// ======================================================
+// DNS CONFIG
+// ======================================================
+
 dns.setServers([
     "8.8.8.8",
     "8.8.4.4"
@@ -21,6 +24,7 @@ const path = require("path");
 
 const newsRoutes = require("./routes/newsRoutes");
 
+
 // ======================================================
 // EXPRESS APP
 // ======================================================
@@ -29,8 +33,36 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
+
 // ======================================================
-// SECURITY HEADERS - HELMET
+// CHECK IMPORTANT ENV VARIABLES
+// ======================================================
+
+const requiredEnvVariables = [
+    "ADMIN_USERNAME",
+    "ADMIN_PASSWORD",
+    "SESSION_SECRET",
+    "MONGODB_URI"
+];
+
+const missingEnvVariables =
+    requiredEnvVariables.filter(
+        (variable) => !process.env[variable]
+    );
+
+if (missingEnvVariables.length > 0) {
+
+    console.error(
+        "❌ Missing environment variables:",
+        missingEnvVariables.join(", ")
+    );
+
+    process.exit(1);
+}
+
+
+// ======================================================
+// SECURITY HEADERS
 // ======================================================
 
 app.use(
@@ -42,7 +74,7 @@ app.use(
 
 // ======================================================
 // TRUST PROXY
-// Live hosting / HTTPS ke liye
+// Required for Render / HTTPS
 // ======================================================
 
 app.set("trust proxy", 1);
@@ -62,7 +94,7 @@ app.use(
 
 
 // ======================================================
-// SECURE SESSION
+// SESSION
 // ======================================================
 
 app.use(
@@ -76,23 +108,16 @@ app.use(
 
         cookie: {
 
-            // Browser JavaScript cookie ko read nahi kar sakega
             httpOnly: true,
 
-            // Basic CSRF protection
             sameSite: "lax",
 
-            // Localhost = false
-            // Live production HTTPS = true
             secure:
                 process.env.NODE_ENV === "production",
 
-            // Session 24 hours tak valid
             maxAge:
                 24 * 60 * 60 * 1000
-
         }
-
     })
 );
 
@@ -105,45 +130,143 @@ app.post(
     "/api/admin/login",
     (req, res) => {
 
-        const {
-            username,
-            password
-        } = req.body;
+        try {
+
+            const username =
+                String(
+                    req.body.username || ""
+                ).trim();
+
+            const password =
+                String(
+                    req.body.password || ""
+                );
 
 
-        if (
-            username ===
-                process.env.ADMIN_USERNAME
-            &&
-            password ===
-                process.env.ADMIN_PASSWORD
-        ) {
+            // ==========================================
+            // EMPTY FIELD CHECK
+            // ==========================================
 
-            // Admin login session
-            req.session.isAdmin = true;
+            if (!username || !password) {
+
+                return res
+                    .status(400)
+                    .json({
+
+                        success: false,
+
+                        message:
+                            "Username and password are required"
+                    });
+            }
 
 
-            return res.status(200).json({
+            // ==========================================
+            // GET ADMIN DETAILS FROM .ENV
+            // ==========================================
 
-                success: true,
+            const adminUsername =
+                String(
+                    process.env.ADMIN_USERNAME || ""
+                ).trim();
 
-                message:
-                    "Login successful"
+            const adminPassword =
+                String(
+                    process.env.ADMIN_PASSWORD || ""
+                );
 
-            });
 
+            // ==========================================
+            // LOGIN CHECK
+            // ==========================================
+
+            if (
+                username === adminUsername &&
+                password === adminPassword
+            ) {
+
+                // Create admin session
+                req.session.isAdmin = true;
+
+
+                // Save session before response
+                req.session.save(
+                    (error) => {
+
+                        if (error) {
+
+                            console.error(
+                                "Session Save Error:",
+                                error
+                            );
+
+
+                            return res
+                                .status(500)
+                                .json({
+
+                                    success: false,
+
+                                    message:
+                                        "Unable to create login session"
+                                });
+                        }
+
+
+                        return res
+                            .status(200)
+                            .json({
+
+                                success: true,
+
+                                loggedIn: true,
+
+                                message:
+                                    "Login successful"
+                            });
+                    }
+                );
+
+
+                return;
+            }
+
+
+            // ==========================================
+            // WRONG LOGIN
+            // ==========================================
+
+            return res
+                .status(401)
+                .json({
+
+                    success: false,
+
+                    loggedIn: false,
+
+                    message:
+                        "Invalid username or password"
+                });
+
+
+        } catch (error) {
+
+            console.error(
+                "Admin Login Error:",
+                error
+            );
+
+
+            return res
+                .status(500)
+                .json({
+
+                    success: false,
+
+                    message:
+                        "Internal server error"
+                });
         }
-
-
-        return res.status(401).json({
-
-            success: false,
-
-            message:
-                "Invalid username or password"
-
-        });
-
     }
 );
 
@@ -158,31 +281,31 @@ app.get(
 
         if (
             req.session &&
-            req.session.isAdmin
+            req.session.isAdmin === true
         ) {
 
-            return res.status(200).json({
+            return res
+                .status(200)
+                .json({
 
-                success: true,
+                    success: true,
 
-                loggedIn: true
-
-            });
-
+                    loggedIn: true
+                });
         }
 
 
-        return res.status(401).json({
+        return res
+            .status(401)
+            .json({
 
-            success: false,
+                success: false,
 
-            loggedIn: false,
+                loggedIn: false,
 
-            message:
-                "Admin login required"
-
-        });
-
+                message:
+                    "Admin login required"
+            });
     }
 );
 
@@ -195,8 +318,22 @@ app.post(
     "/api/admin/logout",
     (req, res) => {
 
+        if (!req.session) {
+
+            return res
+                .status(200)
+                .json({
+
+                    success: true,
+
+                    message:
+                        "Already logged out"
+                });
+        }
+
+
         req.session.destroy(
-            function (error) {
+            (error) => {
 
                 if (error) {
 
@@ -214,17 +351,18 @@ app.post(
 
                             message:
                                 "Logout failed"
-
                         });
-
                 }
 
 
                 res.clearCookie(
                     "connect.sid",
                     {
+
                         httpOnly: true,
+
                         sameSite: "lax",
+
                         secure:
                             process.env.NODE_ENV ===
                             "production"
@@ -240,12 +378,9 @@ app.post(
 
                         message:
                             "Logout successful"
-
                     });
-
             }
         );
-
     }
 );
 
@@ -275,7 +410,7 @@ app.use(
 
 app.get(
     "/",
-    function (req, res) {
+    (req, res) => {
 
         res.sendFile(
             path.join(
@@ -283,7 +418,6 @@ app.get(
                 "index.html"
             )
         );
-
     }
 );
 
@@ -302,51 +436,47 @@ mongoose
         console.log(
             "MongoDB Connected Successfully ✅"
         );
-
     })
 
     .catch((error) => {
 
-        console.log(
+        console.error(
             "MongoDB Connection Failed ❌"
         );
 
-
-        console.log(
+        console.error(
             "Error Name:",
             error.name
         );
 
-
-        console.log(
+        console.error(
             "Error Message:",
             error.message
         );
 
-
-        console.log(
+        console.error(
             "Error Code:",
             error.code
         );
-
     });
 
 
 // ======================================================
-// 404 - PAGE NOT FOUND
-// IMPORTANT: Isko sabhi routes ke baad hi rehne dena
+// 404 PAGE
+// Keep this after all routes
 // ======================================================
 
 app.use(
     (req, res) => {
 
-        res.status(404).sendFile(
-            path.join(
-                __dirname,
-                "404.html"
-            )
-        );
-
+        res
+            .status(404)
+            .sendFile(
+                path.join(
+                    __dirname,
+                    "404.html"
+                )
+            );
     }
 );
 
@@ -357,33 +487,37 @@ app.use(
 
 app.listen(
     PORT,
-    function () {
+    () => {
 
         console.log(
             "-------------------------------------"
         );
 
-
         console.log(
             "NEWSNOVA24 Server Started Successfully"
         );
-
 
         console.log(
             "Server running on port:",
             PORT
         );
 
-
         console.log(
             "Environment:",
-            process.env.NODE_ENV || "development"
+            process.env.NODE_ENV ||
+            "development"
         );
 
+        console.log(
+            "Admin credentials loaded:",
+            process.env.ADMIN_USERNAME &&
+            process.env.ADMIN_PASSWORD
+                ? "YES ✅"
+                : "NO ❌"
+        );
 
         console.log(
             "-------------------------------------"
         );
-
     }
 );

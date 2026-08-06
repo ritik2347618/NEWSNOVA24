@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +13,7 @@
 
     <!-- Font Awesome -->
     <link rel="stylesheet"
-        href="admin.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
@@ -28,17 +29,17 @@
 
         <div class="admin-header-actions">
 
-    <a href="index.html" class="view-site-btn">
-        <i class="fas fa-globe"></i>
-        View Website
-    </a>
+            <a href="index.html" class="view-site-btn">
+                <i class="fas fa-globe"></i>
+                View Website
+            </a>
 
-    <button type="button" id="admin-logout-btn">
-        <i class="fas fa-right-from-bracket"></i>
-        Logout
-    </button>
+            <button type="button" id="admin-logout-btn">
+                <i class="fas fa-right-from-bracket"></i>
+                Logout
+            </button>
 
-</div>
+        </div>
 
     </header>
 
@@ -59,10 +60,10 @@
 
         <!-- ================= NEWS FORM ================= -->
 
-        <form id="newsForm">
+        <form id="newsForm" enctype="multipart/form-data">
 
 
-            <!-- HEADLINE -->
+            <!-- ================= HEADLINE ================= -->
 
             <label for="newsTitle">
                 News Headline
@@ -71,18 +72,23 @@
             <input
                 type="text"
                 id="newsTitle"
+                name="newsTitle"
                 placeholder="Enter news headline"
                 required
             >
 
 
-            <!-- CATEGORY -->
+            <!-- ================= CATEGORY ================= -->
 
             <label for="newsCategory">
                 News Category
             </label>
 
-            <select id="newsCategory" required>
+            <select
+                id="newsCategory"
+                name="newsCategory"
+                required
+            >
 
                 <option value="">
                     Select Category
@@ -109,7 +115,7 @@
             </select>
 
 
-            <!-- AUTHOR -->
+            <!-- ================= AUTHOR ================= -->
 
             <label for="newsAuthor">
                 Author / Reporter
@@ -118,26 +124,42 @@
             <input
                 type="text"
                 id="newsAuthor"
+                name="newsAuthor"
                 placeholder="Reporter name"
                 required
             >
 
 
-            <!-- IMAGE -->
+            <!-- ================= IMAGE UPLOAD ================= -->
 
             <label for="newsImage">
-                News Image URL
+                Upload News Image
             </label>
 
             <input
-                type="text"
+                type="file"
                 id="newsImage"
-                placeholder="Paste news image URL"
+                name="newsImage"
+                accept="image/jpeg, image/png, image/webp, image/jpg"
                 required
             >
 
 
-            <!-- SHORT DESCRIPTION -->
+            <!-- ================= IMAGE PREVIEW ================= -->
+
+            <div class="image-preview-container">
+
+                <img
+                    id="imagePreview"
+                    src=""
+                    alt="Selected News Image"
+                    style="display: none;"
+                >
+
+            </div>
+
+
+            <!-- ================= SHORT DESCRIPTION ================= -->
 
             <label for="newsDescription">
                 Short Description
@@ -145,12 +167,13 @@
 
             <textarea
                 id="newsDescription"
+                name="newsDescription"
                 placeholder="Write a short summary of the news..."
                 required
             ></textarea>
 
 
-            <!-- FULL ARTICLE -->
+            <!-- ================= FULL ARTICLE ================= -->
 
             <label for="newsContent">
                 Full News Article
@@ -158,13 +181,14 @@
 
             <textarea
                 id="newsContent"
+                name="newsContent"
                 class="article-content"
                 placeholder="Write complete news article here..."
                 required
             ></textarea>
 
 
-            <!-- PUBLISH BUTTON -->
+            <!-- ================= PUBLISH BUTTON ================= -->
 
             <button type="submit">
 
@@ -176,59 +200,62 @@
 
         </form>
 
+
         <!-- ==================================================
-     MANAGE PUBLISHED NEWS
-================================================== -->
+             MANAGE PUBLISHED NEWS
+        ================================================== -->
 
-<section class="manage-news-section" id="manage-news-section">
+        <section
+            class="manage-news-section"
+            id="manage-news-section"
+        >
 
-    <div class="manage-news-header">
+            <div class="manage-news-header">
 
-        <h2 id="manage-news-title">
-            <i class="fas fa-list"></i>
-            Manage Published News
-        </h2>
+                <h2 id="manage-news-title">
 
-        <p>
-            View, edit or delete published articles.
-        </p>
+                    <i class="fas fa-list"></i>
 
-    </div>
+                    Manage Published News
 
+                </h2>
 
-    <!-- ==========================================
-         NEWS LIST
-    =========================================== -->
+                <p>
+                    View, edit or delete published articles.
+                </p>
 
-    <div
-        class="published-news-list"
-        id="published-news-list"
-    >
-
-        <!-- Published news JavaScript se yahan aayegi -->
-
-    </div>
+            </div>
 
 
-    <!-- ==========================================
-         NO NEWS MESSAGE
-    =========================================== -->
+            <!-- ================= NEWS LIST ================= -->
 
-    <div
-        class="admin-no-news"
-        id="admin-no-news"
-        style="display:none;"
-    >
+            <div
+                class="published-news-list"
+                id="published-news-list"
+            >
 
-        <i class="fas fa-newspaper"></i>
+                <!-- Published news JavaScript se yahan aayegi -->
 
-        <p>
-            No news has been published yet.
-        </p>
+            </div>
 
-    </div>
 
-</section>
+            <!-- ================= NO NEWS MESSAGE ================= -->
+
+            <div
+                class="admin-no-news"
+                id="admin-no-news"
+                style="display: none;"
+            >
+
+                <i class="fas fa-newspaper"></i>
+
+                <p>
+                    No news has been published yet.
+                </p>
+
+            </div>
+
+        </section>
 
     </main>
 
@@ -237,6 +264,39 @@
 
     <script src="admin.js"></script>
 
+
+    <!-- ================= IMAGE PREVIEW JAVASCRIPT ================= -->
+
+    <script>
+
+        const newsImageInput = document.getElementById("newsImage");
+        const imagePreview = document.getElementById("imagePreview");
+
+        newsImageInput.addEventListener("change", function () {
+
+            const file = this.files[0];
+
+            if (file) {
+
+                const imageURL = URL.createObjectURL(file);
+
+                imagePreview.src = imageURL;
+
+                imagePreview.style.display = "block";
+
+            } else {
+
+                imagePreview.src = "";
+
+                imagePreview.style.display = "none";
+
+            }
+
+        });
+
+    </script>
+
 </body>
 
 </html>
+```

@@ -1,25 +1,22 @@
 // ======================================================
-// NEWSNOVA24 - SECURE ADMIN JAVASCRIPT
-// Session + MongoDB + Publish + View + Edit + Delete
+// NEWSNOVA24 - ADMIN JAVASCRIPT
+// Session + Image Upload + Publish + View + Edit + Delete
 // ======================================================
 
 
-const newsForm =
-    document.getElementById("newsForm");
+// ======================================================
+// ELEMENTS
+// ======================================================
 
-const publishedNewsList =
-    document.getElementById("published-news-list");
-
-const noNewsMessage =
-    document.getElementById("admin-no-news");
-
-
-// Logout button
-const logoutButton =
-    document.getElementById("admin-logout-btn");
-
+const newsForm = document.getElementById("newsForm");
+const publishedNewsList = document.getElementById("published-news-list");
+const noNewsMessage = document.getElementById("admin-no-news");
+const logoutButton = document.getElementById("admin-logout-btn");
+const newsImageInput = document.getElementById("newsImage");
+const imagePreview = document.getElementById("imagePreview");
 
 let editingArticleId = null;
+let existingImage = "";
 
 
 // ======================================================
@@ -27,315 +24,259 @@ let editingArticleId = null;
 // ======================================================
 
 async function checkAdminSession() {
-
     try {
-
-        const response =
-            await fetch("/api/admin/check");
-
+        const response = await fetch("/api/admin/check", {
+            method: "GET",
+            credentials: "same-origin",
+            cache: "no-store"
+        });
 
         if (!response.ok) {
-
-            window.location.href =
-                "login.html";
-
+            window.location.replace("login.html");
             return false;
-
         }
 
-
-        const result =
-            await response.json();
-
+        const result = await response.json();
 
         if (!result.loggedIn) {
-
-            window.location.href =
-                "login.html";
-
+            window.location.replace("login.html");
             return false;
-
         }
-
 
         return true;
 
-
     } catch (error) {
-
-        console.error(
-            "Session check failed:",
-            error
-        );
-
-
-        window.location.href =
-            "login.html";
-
-
+        console.error("Session check failed:", error);
+        window.location.replace("login.html");
         return false;
-
     }
-
 }
 
 
 // ======================================================
-// 2. SESSION EXPIRED / UNAUTHORIZED
+// 2. HANDLE UNAUTHORIZED
 // ======================================================
 
 function handleUnauthorized(response) {
-
-    if (response.status === 401) {
-
-        alert(
-            "Your admin session has expired. Please login again."
-        );
-
-
-        window.location.href =
-            "login.html";
-
-
+    if (response.status === 401 || response.status === 403) {
+        alert("Your admin session has expired. Please login again.");
+        window.location.replace("login.html");
         return true;
-
     }
 
-
     return false;
-
 }
 
 
 // ======================================================
-// 3. PUBLISH / UPDATE NEWS
+// 3. IMAGE PREVIEW
+// ======================================================
+
+if (newsImageInput) {
+    newsImageInput.addEventListener("change", function () {
+
+        const file = this.files[0];
+
+        if (!file) {
+            return;
+        }
+
+        if (!file.type.startsWith("image/")) {
+            alert("Please select a valid image file.");
+            this.value = "";
+            return;
+        }
+
+        const maxSize = 5 * 1024 * 1024;
+
+        if (file.size > maxSize) {
+            alert("Image size must be less than 5MB.");
+            this.value = "";
+            return;
+        }
+
+        if (imagePreview) {
+            const previewURL = URL.createObjectURL(file);
+
+            imagePreview.src = previewURL;
+            imagePreview.style.display = "block";
+        }
+    });
+}
+
+
+// ======================================================
+// 4. PUBLISH / UPDATE NEWS
 // ======================================================
 
 if (newsForm) {
+    newsForm.addEventListener("submit", async function (event) {
 
-    newsForm.addEventListener(
-        "submit",
-        async function (event) {
+        event.preventDefault();
 
-            event.preventDefault();
+        const title =
+            document.getElementById("newsTitle")?.value.trim();
 
+        const category =
+            document.getElementById("newsCategory")?.value;
 
-            const articleData = {
+        const author =
+            document.getElementById("newsAuthor")?.value.trim();
 
-                title:
-                    document
-                        .getElementById("newsTitle")
-                        .value
-                        .trim(),
+        const description =
+            document.getElementById("newsDescription")?.value.trim();
 
-                category:
-                    document
-                        .getElementById("newsCategory")
-                        .value,
+        const content =
+            document.getElementById("newsContent")?.value.trim();
 
-                author:
-                    document
-                        .getElementById("newsAuthor")
-                        .value
-                        .trim(),
+        const imageFile =
+            newsImageInput?.files[0];
 
-                image:
-                    document
-                        .getElementById("newsImage")
-                        .value
-                        .trim(),
 
-                description:
-                    document
-                        .getElementById("newsDescription")
-                        .value
-                        .trim(),
+        // ==================================================
+        // VALIDATION
+        // ==================================================
 
-                content:
-                    document
-                        .getElementById("newsContent")
-                        .value
-                        .trim()
-
-            };
-
-
-            // Validation
-
-            if (
-                !articleData.title ||
-                !articleData.category ||
-                !articleData.author ||
-                !articleData.image ||
-                !articleData.description ||
-                !articleData.content
-            ) {
-
-                alert(
-                    "Please fill all fields!"
-                );
-
-                return;
-
-            }
-
-
-            try {
-
-                let response;
-
-
-                // ======================================
-                // UPDATE NEWS
-                // ======================================
-
-                if (editingArticleId) {
-
-                    response =
-                        await fetch(
-                            `/api/news/${editingArticleId}`,
-                            {
-                                method: "PUT",
-
-                                headers: {
-                                    "Content-Type":
-                                        "application/json"
-                                },
-
-                                body:
-                                    JSON.stringify(
-                                        articleData
-                                    )
-                            }
-                        );
-
-                }
-
-
-                // ======================================
-                // PUBLISH NEWS
-                // ======================================
-
-                else {
-
-                    response =
-                        await fetch(
-                            "/api/news",
-                            {
-                                method: "POST",
-
-                                headers: {
-                                    "Content-Type":
-                                        "application/json"
-                                },
-
-                                body:
-                                    JSON.stringify(
-                                        articleData
-                                    )
-                            }
-                        );
-
-                }
-
-
-                // Session expired?
-
-                if (
-                    handleUnauthorized(
-                        response
-                    )
-                ) {
-
-                    return;
-
-                }
-
-
-                const result =
-                    await response.json();
-
-
-                if (!response.ok) {
-
-                    throw new Error(
-                        result.message ||
-                        "Something went wrong"
-                    );
-
-                }
-
-
-                if (editingArticleId) {
-
-                    alert(
-                        "News updated successfully!"
-                    );
-
-                }
-
-                else {
-
-                    alert(
-                        "News published successfully!"
-                    );
-
-                }
-
-
-                editingArticleId = null;
-
-
-                newsForm.reset();
-
-
-                resetSubmitButton();
-
-
-                await displayPublishedNews();
-
-
-            } catch (error) {
-
-                console.error(error);
-
-
-                alert(
-                    "Unable to save news: " +
-                    error.message
-                );
-
-            }
-
+        if (
+            !title ||
+            !category ||
+            !author ||
+            !description ||
+            !content
+        ) {
+            alert("Please fill all fields!");
+            return;
         }
-    );
 
+
+        if (!editingArticleId && !imageFile) {
+            alert("Please select a news image!");
+            return;
+        }
+
+
+        // ==================================================
+        // CREATE FORMDATA
+        // ==================================================
+
+        const formData = new FormData();
+
+        formData.append("title", title);
+        formData.append("category", category);
+        formData.append("author", author);
+        formData.append("description", description);
+        formData.append("content", content);
+
+        if (imageFile) {
+            formData.append("image", imageFile);
+        }
+
+        if (editingArticleId && existingImage) {
+            formData.append("existingImage", existingImage);
+        }
+
+
+        // ==================================================
+        // SUBMIT
+        // ==================================================
+
+        try {
+
+            let response;
+
+            if (editingArticleId) {
+
+                response = await fetch(
+                    `/api/news/${editingArticleId}`,
+                    {
+                        method: "PUT",
+                        body: formData,
+                        credentials: "same-origin"
+                    }
+                );
+
+            } else {
+
+                response = await fetch(
+                    "/api/news",
+                    {
+                        method: "POST",
+                        body: formData,
+                        credentials: "same-origin"
+                    }
+                );
+            }
+
+
+            if (handleUnauthorized(response)) {
+                return;
+            }
+
+
+            const result = await response.json();
+
+
+            if (!response.ok) {
+                throw new Error(
+                    result.message || "Something went wrong"
+                );
+            }
+
+
+            if (editingArticleId) {
+                alert("News updated successfully!");
+            } else {
+                alert("News published successfully!");
+            }
+
+
+            editingArticleId = null;
+            existingImage = "";
+
+            newsForm.reset();
+
+            if (imagePreview) {
+                imagePreview.src = "";
+                imagePreview.style.display = "none";
+            }
+
+            resetSubmitButton();
+
+            await displayPublishedNews();
+
+        } catch (error) {
+
+            console.error("Save News Error:", error);
+
+            alert(
+                "Unable to save news: " +
+                error.message
+            );
+        }
+    });
 }
 
 
 // ======================================================
-// 4. GET ARTICLES
+// 5. GET ARTICLES
 // ======================================================
 
 async function getArticles() {
 
     try {
 
-        const response =
-            await fetch("/api/news");
+        const response = await fetch("/api/news", {
+            method: "GET",
+            cache: "no-store"
+        });
 
-
-        const result =
-            await response.json();
+        const result = await response.json();
 
 
         if (!response.ok) {
-
             throw new Error(
-                result.message ||
-                "Unable to load news"
+                result.message || "Unable to load news"
             );
-
         }
 
 
@@ -349,272 +290,232 @@ async function getArticles() {
             error
         );
 
-
         return [];
-
     }
-
 }
 
 
 // ======================================================
-// 5. DISPLAY PUBLISHED NEWS
+// ESCAPE HTML
+// ======================================================
+
+function escapeHTML(value = "") {
+
+    return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
+
+
+// ======================================================
+// 6. DISPLAY PUBLISHED NEWS
 // ======================================================
 
 async function displayPublishedNews() {
 
     if (!publishedNewsList) {
-
         return;
-
     }
 
 
-    const articles =
-        await getArticles();
+    const articles = await getArticles();
 
-
-    publishedNewsList.innerHTML =
-        "";
+    publishedNewsList.innerHTML = "";
 
 
     if (articles.length === 0) {
 
         if (noNewsMessage) {
-
-            noNewsMessage.style.display =
-                "block";
-
+            noNewsMessage.style.display = "block";
         }
 
-
         return;
-
     }
 
 
     if (noNewsMessage) {
-
-        noNewsMessage.style.display =
-            "none";
-
+        noNewsMessage.style.display = "none";
     }
 
 
-    articles.forEach(
-        function (article) {
+    articles.forEach(function (article) {
+
+        const card = document.createElement("div");
+
+        card.classList.add("admin-news-card");
+
+        card.id =
+            "admin-news-" +
+            article._id;
 
 
-            const card =
-                document.createElement(
-                    "div"
-                );
-
-
-            card.classList.add(
-                "admin-news-card"
-            );
-
-
-            card.id =
-                "admin-news-" +
-                article._id;
-
-
-            const date =
-                new Date(
-                    article.createdAt
-                ).toLocaleDateString(
+        const date = article.createdAt
+            ? new Date(article.createdAt)
+                .toLocaleDateString(
                     "en-IN",
                     {
                         day: "2-digit",
                         month: "long",
                         year: "numeric"
                     }
-                );
+                )
+            : "";
 
 
-            card.innerHTML = `
-
-                <div class="admin-news-image">
-
-                    <img
-                        src="${article.image}"
-                        alt="${article.title}"
-                    >
-
-                </div>
+        const image = escapeHTML(article.image || "");
+        const title = escapeHTML(article.title || "");
+        const category = escapeHTML(article.category || "");
+        const description = escapeHTML(article.description || "");
+        const author = escapeHTML(article.author || "");
+        const id = escapeHTML(article._id || "");
 
 
-                <div class="admin-news-content">
+        card.innerHTML = `
+
+            <div class="admin-news-image">
+
+                <img
+                    src="${image}"
+                    alt="${title}"
+                >
+
+            </div>
 
 
-                    <span class="admin-news-category">
+            <div class="admin-news-content">
 
-                        ${article.category}
+                <span class="admin-news-category">
+                    ${category}
+                </span>
 
+
+                <h3>
+                    ${title}
+                </h3>
+
+
+                <p>
+                    ${description}
+                </p>
+
+
+                <div class="admin-news-meta">
+
+                    <span>
+                        ${author}
                     </span>
 
-
-                    <h3>
-
-                        ${article.title}
-
-                    </h3>
-
-
-                    <p>
-
-                        ${article.description}
-
-                    </p>
-
-
-                    <div class="admin-news-meta">
-
-                        <span>
-                            ${article.author}
-                        </span>
-
-                        <span>
-                            ${date}
-                        </span>
-
-                    </div>
-
-
-                    <div class="admin-news-actions">
-
-
-                        <button
-                            type="button"
-                            class="view-news-btn"
-                            data-id="${article._id}"
-                        >
-                            View
-                        </button>
-
-
-                        <button
-                            type="button"
-                            class="edit-news-btn"
-                            data-id="${article._id}"
-                        >
-                            Edit
-                        </button>
-
-
-                        <button
-                            type="button"
-                            class="delete-news-btn"
-                            data-id="${article._id}"
-                        >
-                            Delete
-                        </button>
-
-
-                    </div>
+                    <span>
+                        ${date}
+                    </span>
 
                 </div>
 
-            `;
+
+                <div class="admin-news-actions">
+
+                    <button
+                        type="button"
+                        class="view-news-btn"
+                        data-id="${id}"
+                    >
+                        View
+                    </button>
 
 
-            publishedNewsList
-                .appendChild(card);
+                    <button
+                        type="button"
+                        class="edit-news-btn"
+                        data-id="${id}"
+                    >
+                        Edit
+                    </button>
 
-        }
-    );
+
+                    <button
+                        type="button"
+                        class="delete-news-btn"
+                        data-id="${id}"
+                    >
+                        Delete
+                    </button>
+
+                </div>
+
+            </div>
+        `;
+
+
+        publishedNewsList.appendChild(card);
+    });
 
 
     addActionEvents();
-
 }
 
 
 // ======================================================
-// 6. BUTTON EVENTS
+// 7. BUTTON EVENTS
 // ======================================================
 
 function addActionEvents() {
 
-
-    // VIEW
-
     document
-        .querySelectorAll(
-            ".view-news-btn"
-        )
-        .forEach(
-            function (button) {
+        .querySelectorAll(".view-news-btn")
+        .forEach(function (button) {
 
-                button.addEventListener(
-                    "click",
-                    function () {
+            button.addEventListener(
+                "click",
+                function () {
 
-                        window.location.href =
-                            "article.html?id=" +
-                            this.dataset.id;
-
-                    }
-                );
-
-            }
-        );
-
-
-    // EDIT
-
-    document
-        .querySelectorAll(
-            ".edit-news-btn"
-        )
-        .forEach(
-            function (button) {
-
-                button.addEventListener(
-                    "click",
-                    function () {
-
-                        editArticle(
+                    window.location.href =
+                        "article.html?id=" +
+                        encodeURIComponent(
                             this.dataset.id
                         );
+                }
+            );
+        });
 
-                    }
-                );
-
-            }
-        );
-
-
-    // DELETE
 
     document
-        .querySelectorAll(
-            ".delete-news-btn"
-        )
-        .forEach(
-            function (button) {
+        .querySelectorAll(".edit-news-btn")
+        .forEach(function (button) {
 
-                button.addEventListener(
-                    "click",
-                    function () {
+            button.addEventListener(
+                "click",
+                function () {
 
-                        deleteArticle(
-                            this.dataset.id
-                        );
+                    editArticle(
+                        this.dataset.id
+                    );
+                }
+            );
+        });
 
-                    }
-                );
 
-            }
-        );
+    document
+        .querySelectorAll(".delete-news-btn")
+        .forEach(function (button) {
 
+            button.addEventListener(
+                "click",
+                function () {
+
+                    deleteArticle(
+                        this.dataset.id
+                    );
+                }
+            );
+        });
 }
 
 
 // ======================================================
-// 7. EDIT ARTICLE
+// 8. EDIT ARTICLE
 // ======================================================
 
 async function editArticle(articleId) {
@@ -623,7 +524,11 @@ async function editArticle(articleId) {
 
         const response =
             await fetch(
-                `/api/news/${articleId}`
+                `/api/news/${encodeURIComponent(articleId)}`,
+                {
+                    method: "GET",
+                    cache: "no-store"
+                }
             );
 
 
@@ -634,9 +539,9 @@ async function editArticle(articleId) {
         if (!response.ok) {
 
             throw new Error(
-                result.message
+                result.message ||
+                "Unable to load article"
             );
-
         }
 
 
@@ -644,48 +549,94 @@ async function editArticle(articleId) {
             result.news;
 
 
+        if (!article) {
+            throw new Error(
+                "Article not found"
+            );
+        }
+
+
         editingArticleId =
             article._id;
 
 
-        document
-            .getElementById("newsTitle")
-            .value =
-            article.title;
+        existingImage =
+            article.image || "";
 
 
-        document
-            .getElementById("newsCategory")
-            .value =
-            article.category;
+        // ==================================================
+        // FILL FORM
+        // ==================================================
+
+        const titleInput =
+            document.getElementById("newsTitle");
+
+        const categoryInput =
+            document.getElementById("newsCategory");
+
+        const authorInput =
+            document.getElementById("newsAuthor");
+
+        const descriptionInput =
+            document.getElementById("newsDescription");
+
+        const contentInput =
+            document.getElementById("newsContent");
 
 
-        document
-            .getElementById("newsAuthor")
-            .value =
-            article.author;
+        if (titleInput) {
+            titleInput.value =
+                article.title || "";
+        }
 
 
-        document
-            .getElementById("newsImage")
-            .value =
-            article.image;
+        if (categoryInput) {
+            categoryInput.value =
+                article.category || "";
+        }
 
 
-        document
-            .getElementById("newsDescription")
-            .value =
-            article.description;
+        if (authorInput) {
+            authorInput.value =
+                article.author || "";
+        }
 
 
-        document
-            .getElementById("newsContent")
-            .value =
-            article.content;
+        if (descriptionInput) {
+            descriptionInput.value =
+                article.description || "";
+        }
 
 
+        if (contentInput) {
+            contentInput.value =
+                article.content || "";
+        }
+
+
+        // File input blank rahega
+        if (newsImageInput) {
+            newsImageInput.value = "";
+        }
+
+
+        // Existing image preview
+        if (
+            imagePreview &&
+            article.image
+        ) {
+
+            imagePreview.src =
+                article.image;
+
+            imagePreview.style.display =
+                "block";
+        }
+
+
+        // Change submit button
         const submitButton =
-            newsForm.querySelector(
+            newsForm?.querySelector(
                 'button[type="submit"]'
             );
 
@@ -693,36 +644,35 @@ async function editArticle(articleId) {
         if (submitButton) {
 
             submitButton.innerHTML =
-                "Update News";
-
+                '<i class="fas fa-save"></i> Update News';
         }
 
 
-        newsForm.scrollIntoView({
-
+        // Scroll to form
+        newsForm?.scrollIntoView({
             behavior: "smooth",
-
             block: "start"
-
         });
 
 
     } catch (error) {
 
-        console.error(error);
+        console.error(
+            "Edit Article Error:",
+            error
+        );
 
 
         alert(
-            "Unable to load article for editing."
+            "Unable to load article for editing: " +
+            error.message
         );
-
     }
-
 }
 
 
 // ======================================================
-// 8. DELETE ARTICLE
+// 9. DELETE ARTICLE
 // ======================================================
 
 async function deleteArticle(articleId) {
@@ -734,9 +684,7 @@ async function deleteArticle(articleId) {
 
 
     if (!confirmDelete) {
-
         return;
-
     }
 
 
@@ -744,21 +692,16 @@ async function deleteArticle(articleId) {
 
         const response =
             await fetch(
-                `/api/news/${articleId}`,
+                `/api/news/${encodeURIComponent(articleId)}`,
                 {
-                    method: "DELETE"
+                    method: "DELETE",
+                    credentials: "same-origin"
                 }
             );
 
 
-        if (
-            handleUnauthorized(
-                response
-            )
-        ) {
-
+        if (handleUnauthorized(response)) {
             return;
-
         }
 
 
@@ -769,9 +712,9 @@ async function deleteArticle(articleId) {
         if (!response.ok) {
 
             throw new Error(
-                result.message
+                result.message ||
+                "Unable to delete news"
             );
-
         }
 
 
@@ -786,11 +729,20 @@ async function deleteArticle(articleId) {
         ) {
 
             editingArticleId = null;
+            existingImage = "";
 
-            newsForm.reset();
+            newsForm?.reset();
+
+
+            if (imagePreview) {
+
+                imagePreview.src = "";
+                imagePreview.style.display =
+                    "none";
+            }
+
 
             resetSubmitButton();
-
         }
 
 
@@ -799,28 +751,28 @@ async function deleteArticle(articleId) {
 
     } catch (error) {
 
-        console.error(error);
+        console.error(
+            "Delete News Error:",
+            error
+        );
 
 
         alert(
-            "Unable to delete news."
+            "Unable to delete news: " +
+            error.message
         );
-
     }
-
 }
 
 
 // ======================================================
-// 9. RESET SUBMIT BUTTON
+// 10. RESET SUBMIT BUTTON
 // ======================================================
 
 function resetSubmitButton() {
 
     if (!newsForm) {
-
         return;
-
     }
 
 
@@ -833,15 +785,13 @@ function resetSubmitButton() {
     if (submitButton) {
 
         submitButton.innerHTML =
-            "Publish News";
-
+            '<i class="fas fa-paper-plane"></i> Publish News';
     }
-
 }
 
 
 // ======================================================
-// 10. SECURE LOGOUT
+// 11. SECURE LOGOUT
 // ======================================================
 
 if (logoutButton) {
@@ -856,7 +806,8 @@ if (logoutButton) {
                     await fetch(
                         "/api/admin/logout",
                         {
-                            method: "POST"
+                            method: "POST",
+                            credentials: "same-origin"
                         }
                     );
 
@@ -871,23 +822,22 @@ if (logoutButton) {
                         result.message ||
                         "Logout failed"
                     );
-
                 }
 
-
-                // Purane frontend login flags bhi hata do
 
                 localStorage.removeItem(
                     "newsnova24_admin_logged_in"
                 );
+
 
                 sessionStorage.removeItem(
                     "newsnova24_admin_logged_in"
                 );
 
 
-                window.location.href =
-                    "login.html";
+                window.location.replace(
+                    "login.html"
+                );
 
 
             } catch (error) {
@@ -901,17 +851,14 @@ if (logoutButton) {
                 alert(
                     "Unable to logout."
                 );
-
             }
-
         }
     );
-
 }
 
 
 // ======================================================
-// 11. PAGE START
+// 12. PAGE START
 // ======================================================
 
 async function startAdminPanel() {
@@ -921,15 +868,16 @@ async function startAdminPanel() {
 
 
     if (!loggedIn) {
-
         return;
-
     }
 
 
     await displayPublishedNews();
-
 }
 
+
+// ======================================================
+// START ADMIN PANEL
+// ======================================================
 
 startAdminPanel();
