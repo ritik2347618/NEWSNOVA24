@@ -1964,3 +1964,54 @@ header{
     outline: 3px solid rgba(0, 51, 153, 0.25);
     outline-offset: 2px;
 }
+
+/* ======================================================
+   TOP BREAKING LATEST NEWS
+====================================================== */
+
+#top-breaking-news {
+    cursor: pointer;
+}
+
+/* LATEST BADGE */
+
+.breaking-badge {
+    display: inline-block;
+    background: #e60023;
+    color: #ffffff;
+
+    padding: 6px 12px;
+    margin-bottom: 10px;
+
+    border-radius: 5px;
+
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* BREAKING TITLE */
+
+#top-breaking-title {
+    transition: 0.3s;
+}
+
+#top-breaking-news:hover #top-breaking-title {
+    color: #ffd700;
+}
+
+/* BREAKING IMAGE */
+
+#top-breaking-image {
+    transition: transform 0.4s ease;
+}
+
+#top-breaking-news:hover #top-breaking-image {
+    transform: scale(1.04);
+}
+
+/* READ FULL NEWS BUTTON */
+
+#top-breaking-button {
+    cursor: pointer;
+}

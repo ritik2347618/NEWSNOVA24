@@ -474,6 +474,10 @@ async function loadPublishedNews() {
         allPublishedNews =
             publishedNews;
 
+updateTopBreakingNews(
+    allPublishedNews
+);
+
 
         // Homepage par sab news show karo
 
@@ -1151,3 +1155,185 @@ function searchNews() {
 // ======================================================
 
 loadPublishedNews();
+
+// ======================================================
+// 19. TOP BREAKING NEWS
+// Latest uploaded article automatically show hoga
+// ======================================================
+
+function updateTopBreakingNews(newsList) {
+
+    // Agar news nahi hai to kuch mat karo
+
+    if (
+        !Array.isArray(newsList) ||
+        newsList.length === 0
+    ) {
+        return;
+    }
+
+
+    // ==================================================
+    // LATEST NEWS FIND KARO
+    // ==================================================
+
+    const sortedNews =
+        [...newsList].sort(
+            function (a, b) {
+
+                const dateA =
+                    new Date(
+                        a.createdAt || 0
+                    ).getTime();
+
+                const dateB =
+                    new Date(
+                        b.createdAt || 0
+                    ).getTime();
+
+                return dateB - dateA;
+
+            }
+        );
+
+
+    // Sabse latest uploaded news
+
+    const latestArticle =
+        sortedNews[0];
+
+
+    if (!latestArticle) {
+        return;
+    }
+
+
+    // ==================================================
+    // HTML ELEMENTS
+    // ==================================================
+
+    const breakingContainer =
+        document.getElementById(
+            "top-breaking-news"
+        );
+
+
+    const breakingImage =
+        document.getElementById(
+            "top-breaking-image"
+        );
+
+
+    const breakingTitle =
+        document.getElementById(
+            "top-breaking-title"
+        );
+
+
+    const breakingDescription =
+        document.getElementById(
+            "top-breaking-description"
+        );
+
+
+    const breakingButton =
+        document.getElementById(
+            "top-breaking-button"
+        );
+
+
+    // ==================================================
+    // IMAGE
+    // ==================================================
+
+    if (breakingImage) {
+
+        if (latestArticle.image) {
+
+            breakingImage.src =
+                latestArticle.image;
+
+        }
+
+        breakingImage.alt =
+            latestArticle.title ||
+            "Top Breaking News";
+
+    }
+
+
+    // ==================================================
+    // TITLE
+    // ==================================================
+
+    if (breakingTitle) {
+
+        breakingTitle.textContent =
+            latestArticle.title ||
+            "Top Breaking News";
+
+    }
+
+
+    // ==================================================
+    // DESCRIPTION
+    // ==================================================
+
+    if (breakingDescription) {
+
+        breakingDescription.textContent =
+            latestArticle.description ||
+            "Read the latest news on NEWSNOVA24.";
+
+    }
+
+
+    // ==================================================
+    // ARTICLE URL
+    // ==================================================
+
+    const articleURL =
+        "article.html?id=" +
+        latestArticle._id;
+
+
+    // ==================================================
+    // COMPLETE TOP BREAKING CARD CLICK
+    // ==================================================
+
+    if (breakingContainer) {
+
+        breakingContainer.style.cursor =
+            "pointer";
+
+
+        breakingContainer.onclick =
+            function () {
+
+                window.location.href =
+                    articleURL;
+
+            };
+
+    }
+
+
+    // ==================================================
+    // READ FULL NEWS BUTTON CLICK
+    // ==================================================
+
+    if (breakingButton) {
+
+        breakingButton.onclick =
+            function (event) {
+
+                event.stopPropagation();
+
+                window.location.href =
+                    articleURL;
+
+            };
+
+    }
+
+}
