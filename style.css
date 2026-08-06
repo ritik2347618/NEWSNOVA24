@@ -2033,3 +2033,95 @@ header{
 
     font-size: 14px;
 }
+
+/* ======================================================
+   PROFESSIONAL FOOTER
+====================================================== */
+
+.footer{
+    width:100%;
+    background:#232945;
+    border-top:1px solid rgba(255,255,255,.08);
+    padding:28px 8%;
+}
+
+.footer-container{
+    max-width:1400px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.footer-left p{
+    color:#bfc6da;
+    font-size:15px;
+    margin:0;
+}
+
+.footer-left strong{
+    color:#ffffff;
+    font-weight:600;
+}
+
+.footer-right{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:22px;
+}
+
+.footer-right a{
+    color:#bfc6da;
+    font-size:15px;
+    transition:.3s;
+}
+
+.footer-right a:hover{
+    color:#ffffff;
+}
+
+.footer-right a::after{
+    content:"";
+    display:block;
+    width:0;
+    height:2px;
+    background:#e60023;
+    transition:.3s;
+}
+
+.footer-right a:hover::after{
+    width:100%;
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media(max-width:768px){
+
+.footer{
+    padding:25px 15px;
+}
+
+.footer-container{
+    flex-direction:column;
+    text-align:center;
+}
+
+.footer-right{
+    justify-content:center;
+    gap:15px;
+}
+
+.footer-right a{
+    font-size:14px;
+}
+
+.footer-left p{
+    font-size:14px;
+}
+
+}
