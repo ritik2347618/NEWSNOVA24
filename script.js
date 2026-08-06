@@ -1,6 +1,6 @@
 // ======================================================
 // NEWSNOVA24 - COMPLETE MAIN WEBSITE JAVASCRIPT
-// MongoDB + Search + Profiles + Mobile Menu
+// MongoDB + Search + Profiles + Mobile Menu + Categories
 // ======================================================
 
 
@@ -43,7 +43,6 @@ let breakingIndex = 0;
 const marqueeElement =
     document.querySelector("marquee");
 
-
 if (marqueeElement) {
 
     setInterval(function () {
@@ -55,9 +54,7 @@ if (marqueeElement) {
         breakingIndex++;
 
         if (breakingIndex >= breakingNews.length) {
-
             breakingIndex = 0;
-
         }
 
     }, 3000);
@@ -82,32 +79,22 @@ if (menuToggle && navMenu) {
         "click",
         function () {
 
-            // Open / Close menu
-
             navMenu.classList.toggle(
                 "mobile-menu-open"
             );
-
 
             const menuIsOpen =
                 navMenu.classList.contains(
                     "mobile-menu-open"
                 );
 
-
-            // Accessibility
-
             menuToggle.setAttribute(
                 "aria-expanded",
                 menuIsOpen
             );
 
-
-            // Change ☰ into X
-
             const menuIcon =
                 menuToggle.querySelector("i");
-
 
             if (menuIcon) {
 
@@ -121,9 +108,7 @@ if (menuToggle && navMenu) {
                         "fa-xmark"
                     );
 
-                }
-
-                else {
+                } else {
 
                     menuIcon.classList.remove(
                         "fa-xmark"
@@ -141,13 +126,10 @@ if (menuToggle && navMenu) {
     );
 
 
-    // ==================================================
-    // CLOSE MENU WHEN USER CLICKS A LINK
-    // ==================================================
+    // Close mobile menu after link click
 
     const navigationLinks =
         navMenu.querySelectorAll("a");
-
 
     navigationLinks.forEach(
         function (link) {
@@ -157,9 +139,7 @@ if (menuToggle && navMenu) {
                 function () {
 
                     if (window.innerWidth <= 600) {
-
                         closeMobileMenu();
-
                     }
 
                 }
@@ -172,32 +152,26 @@ if (menuToggle && navMenu) {
 
 
 // ======================================================
-// 4. CLOSE MOBILE MENU FUNCTION
+// 4. CLOSE MOBILE MENU
 // ======================================================
 
 function closeMobileMenu() {
 
     if (!navMenu || !menuToggle) {
-
         return;
-
     }
-
 
     navMenu.classList.remove(
         "mobile-menu-open"
     );
-
 
     menuToggle.setAttribute(
         "aria-expanded",
         "false"
     );
 
-
     const menuIcon =
         menuToggle.querySelector("i");
-
 
     if (menuIcon) {
 
@@ -215,23 +189,15 @@ function closeMobileMenu() {
 
 
 // ======================================================
-// 5. HANDLE WINDOW RESIZE
+// 5. WINDOW RESIZE
 // ======================================================
 
 window.addEventListener(
     "resize",
     function () {
 
-        /*
-        Agar phone se desktop width par
-        browser resize hota hai to mobile
-        menu state reset ho jayegi.
-        */
-
         if (window.innerWidth > 600) {
-
             closeMobileMenu();
-
         }
 
     }
@@ -255,26 +221,15 @@ function hideAllProfiles() {
 
 
     if (abhishekProfile) {
-
-        abhishekProfile.style.display =
-            "none";
-
+        abhishekProfile.style.display = "none";
     }
-
 
     if (ritikProfile) {
-
-        ritikProfile.style.display =
-            "none";
-
+        ritikProfile.style.display = "none";
     }
 
-
     if (praveenProfile) {
-
-        praveenProfile.style.display =
-            "none";
-
+        praveenProfile.style.display = "none";
     }
 
 }
@@ -288,30 +243,21 @@ function showAbhishek() {
 
     hideAllProfiles();
 
-
     const abhishekProfile =
         document.getElementById(
             "abhishek"
         );
 
-
     if (!abhishekProfile) {
-
         return;
-
     }
-
 
     abhishekProfile.style.display =
         "block";
 
-
     abhishekProfile.scrollIntoView({
-
         behavior: "smooth",
-
         block: "start"
-
     });
 
 }
@@ -325,30 +271,21 @@ function showRitik() {
 
     hideAllProfiles();
 
-
     const ritikProfile =
         document.getElementById(
             "ritik"
         );
 
-
     if (!ritikProfile) {
-
         return;
-
     }
-
 
     ritikProfile.style.display =
         "block";
 
-
     ritikProfile.scrollIntoView({
-
         behavior: "smooth",
-
         block: "start"
-
     });
 
 }
@@ -362,30 +299,21 @@ function showPraveen() {
 
     hideAllProfiles();
 
-
     const praveenProfile =
         document.getElementById(
             "praveen"
         );
 
-
     if (!praveenProfile) {
-
         return;
-
     }
-
 
     praveenProfile.style.display =
         "block";
 
-
     praveenProfile.scrollIntoView({
-
         behavior: "smooth",
-
         block: "start"
-
     });
 
 }
@@ -409,32 +337,22 @@ if (contactLink) {
 
             event.preventDefault();
 
-
             const contactSection =
                 document.getElementById(
                     "contact"
                 );
 
-
             if (contactSection) {
 
                 contactSection.scrollIntoView({
-
                     behavior: "smooth",
-
                     block: "start"
-
                 });
 
             }
 
-
-            // Mobile menu close
-
             if (window.innerWidth <= 600) {
-
                 closeMobileMenu();
-
             }
 
         }
@@ -461,30 +379,22 @@ if (aboutLink) {
 
             event.preventDefault();
 
-
             const aboutSection =
                 document.getElementById(
                     "about"
                 );
 
-
             if (aboutSection) {
 
                 aboutSection.scrollIntoView({
-
                     behavior: "smooth",
-
                     block: "start"
-
                 });
 
             }
 
-
             if (window.innerWidth <= 600) {
-
                 closeMobileMenu();
-
             }
 
         }
@@ -503,6 +413,28 @@ const newsContainer =
     );
 
 
+// Store all MongoDB news here
+
+let allPublishedNews = [];
+
+
+// Currently selected category
+
+let activeCategory = "All";
+
+
+const latestNewsTitle =
+    document.getElementById(
+        "latest-news-title"
+    );
+
+
+const latestNewsSection =
+    document.getElementById(
+        "latest-news-section"
+    );
+
+
 // ======================================================
 // 13. GET NEWS FROM MONGODB
 // ======================================================
@@ -510,11 +442,8 @@ const newsContainer =
 async function loadPublishedNews() {
 
     if (!newsContainer) {
-
         return;
-
     }
-
 
     try {
 
@@ -529,10 +458,8 @@ async function loadPublishedNews() {
         if (!response.ok) {
 
             throw new Error(
-
                 result.message ||
                 "Unable to load news"
-
             );
 
         }
@@ -542,14 +469,20 @@ async function loadPublishedNews() {
             result.news || [];
 
 
+        // Save all news
+
+        allPublishedNews =
+            publishedNews;
+
+
+        // Homepage par sab news show karo
+
         displayNews(
-            publishedNews
+            allPublishedNews
         );
 
 
-    }
-
-    catch (error) {
+    } catch (error) {
 
         console.error(
             "Unable to load news:",
@@ -560,9 +493,7 @@ async function loadPublishedNews() {
         newsContainer.innerHTML = `
 
             <p id="no-news-message">
-
                 Unable to load news.
-
             </p>
 
         `;
@@ -573,15 +504,13 @@ async function loadPublishedNews() {
 
 
 // ======================================================
-// 14. DISPLAY NEWS ON HOMEPAGE
+// 14. DISPLAY NEWS
 // ======================================================
 
 function displayNews(publishedNews) {
 
     if (!newsContainer) {
-
         return;
-
     }
 
 
@@ -589,21 +518,26 @@ function displayNews(publishedNews) {
 
 
     // ==================================================
-    // NO NEWS AVAILABLE
+    // NO NEWS
     // ==================================================
 
     if (publishedNews.length === 0) {
 
+        const message =
+            activeCategory === "All"
+                ? "No news published yet."
+                : "No " +
+                  activeCategory +
+                  " news published yet.";
+
+
         newsContainer.innerHTML = `
 
             <p id="no-news-message">
-
-                No news published yet.
-
+                ${message}
             </p>
 
         `;
-
 
         return;
 
@@ -633,7 +567,7 @@ function displayNews(publishedNews) {
                 "pointer";
 
 
-            // MongoDB Article ID
+            // MongoDB article ID
 
             newsCard.id =
                 "news-" +
@@ -649,9 +583,7 @@ function displayNews(publishedNews) {
                 function () {
 
                     window.location.href =
-
                         "article.html?id=" +
-
                         article._id;
 
                 }
@@ -702,17 +634,21 @@ function displayNews(publishedNews) {
             const image =
                 article.image || "";
 
+
             const title =
                 article.title ||
                 "Untitled News";
+
 
             const category =
                 article.category ||
                 "News";
 
+
             const description =
                 article.description ||
                 "";
+
 
             const author =
                 article.author ||
@@ -736,23 +672,17 @@ function displayNews(publishedNews) {
 
 
                     <span class="news-category">
-
                         ${category}
-
                     </span>
 
 
                     <h3 class="news-headline">
-
                         ${title}
-
                     </h3>
 
 
                     <p class="news-description">
-
                         ${description}
-
                     </p>
 
 
@@ -760,16 +690,12 @@ function displayNews(publishedNews) {
 
 
                         <span class="news-author">
-
                             By ${author}
-
                         </span>
 
 
                         <span class="news-date">
-
                             ${articleDate}
-
                         </span>
 
 
@@ -792,7 +718,271 @@ function displayNews(publishedNews) {
 
 
 // ======================================================
-// 15. SEARCH NEWS
+// 15. CATEGORY FILTER SYSTEM
+// ======================================================
+
+const categoryNames = [
+
+    "India",
+    "World",
+    "Politics",
+    "Business",
+    "Technology",
+    "Sports",
+    "Entertainment",
+    "Health"
+
+];
+
+
+const navLinks =
+    document.querySelectorAll(
+        "#nav-menu a"
+    );
+
+
+// ======================================================
+// ACTIVE NAVIGATION
+// ======================================================
+
+function setActiveNavigation(clickedLink) {
+
+    navLinks.forEach(
+        function (link) {
+
+            link.classList.remove(
+                "active"
+            );
+
+        }
+    );
+
+
+    if (clickedLink) {
+
+        clickedLink.classList.add(
+            "active"
+        );
+
+    }
+
+}
+
+
+// ======================================================
+// SHOW CATEGORY NEWS
+// ======================================================
+
+function showCategoryNews(
+    category,
+    clickedLink
+) {
+
+    activeCategory =
+        category;
+
+
+    // Filter MongoDB news according to category
+
+    const filteredNews =
+        allPublishedNews.filter(
+            function (article) {
+
+                const articleCategory =
+                    String(
+                        article.category || ""
+                    )
+                        .trim()
+                        .toLowerCase();
+
+
+                const selectedCategory =
+                    category
+                        .trim()
+                        .toLowerCase();
+
+
+                return (
+                    articleCategory ===
+                    selectedCategory
+                );
+
+            }
+        );
+
+
+    // Navigation active class
+
+    setActiveNavigation(
+        clickedLink
+    );
+
+
+    // Change Latest News heading
+
+    if (latestNewsTitle) {
+
+        latestNewsTitle.textContent =
+            category + " News";
+
+    }
+
+
+    // Display filtered category
+
+    displayNews(
+        filteredNews
+    );
+
+
+    // Clear search box
+
+    if (searchInput) {
+        searchInput.value = "";
+    }
+
+
+    // Scroll to news
+
+    if (latestNewsSection) {
+
+        latestNewsSection.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    }
+
+}
+
+
+// ======================================================
+// SHOW ALL NEWS
+// ======================================================
+
+function showAllNews(clickedLink) {
+
+    activeCategory =
+        "All";
+
+
+    setActiveNavigation(
+        clickedLink
+    );
+
+
+    if (latestNewsTitle) {
+
+        latestNewsTitle.textContent =
+            "Latest News";
+
+    }
+
+
+    displayNews(
+        allPublishedNews
+    );
+
+
+    if (searchInput) {
+        searchInput.value = "";
+    }
+
+}
+
+
+// ======================================================
+// CATEGORY NAVIGATION CLICK
+// ======================================================
+
+navLinks.forEach(
+    function (link) {
+
+
+        const linkText =
+            link.textContent.trim();
+
+
+        // ==================================================
+        // CATEGORY LINKS
+        // ==================================================
+
+        if (
+            categoryNames.includes(
+                linkText
+            )
+        ) {
+
+            link.addEventListener(
+                "click",
+                function (event) {
+
+                    event.preventDefault();
+
+
+                    showCategoryNews(
+                        linkText,
+                        link
+                    );
+
+
+                    if (
+                        window.innerWidth <= 600
+                    ) {
+
+                        closeMobileMenu();
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        // ==================================================
+        // HOME LINK
+        // ==================================================
+
+        if (linkText === "Home") {
+
+            link.addEventListener(
+                "click",
+                function (event) {
+
+                    event.preventDefault();
+
+
+                    showAllNews(
+                        link
+                    );
+
+
+                    window.scrollTo({
+                        top: 0,
+                        behavior: "smooth"
+                    });
+
+
+                    if (
+                        window.innerWidth <= 600
+                    ) {
+
+                        closeMobileMenu();
+
+                    }
+
+                }
+            );
+
+        }
+
+    }
+);
+
+
+// ======================================================
+// 16. SEARCH NEWS
 // ======================================================
 
 const searchInput =
@@ -810,9 +1000,7 @@ const searchButton =
 if (searchButton && searchInput) {
 
 
-    // ==================================================
     // SEARCH BUTTON CLICK
-    // ==================================================
 
     searchButton.addEventListener(
         "click",
@@ -824,9 +1012,7 @@ if (searchButton && searchInput) {
     );
 
 
-    // ==================================================
     // ENTER KEY SEARCH
-    // ==================================================
 
     searchInput.addEventListener(
         "keydown",
@@ -847,15 +1033,13 @@ if (searchButton && searchInput) {
 
 
 // ======================================================
-// 16. SEARCH FUNCTION
+// 17. SEARCH FUNCTION
 // ======================================================
 
 function searchNews() {
 
     if (!searchInput) {
-
         return;
-
     }
 
 
@@ -923,17 +1107,21 @@ function searchNews() {
 
 
             if (
-                headline.includes(searchValue) ||
-                category.includes(searchValue) ||
-                description.includes(searchValue)
+                headline.includes(
+                    searchValue
+                ) ||
+                category.includes(
+                    searchValue
+                ) ||
+                description.includes(
+                    searchValue
+                )
             ) {
 
                 card.style.display =
                     "block";
 
-            }
-
-            else {
+            } else {
 
                 card.style.display =
                     "none";
@@ -944,24 +1132,13 @@ function searchNews() {
     );
 
 
-    // ==================================================
-    // SCROLL TO LATEST NEWS
-    // ==================================================
-
-    const latestNewsSection =
-        document.getElementById(
-            "latest-news-section"
-        );
-
+    // Scroll to news
 
     if (latestNewsSection) {
 
         latestNewsSection.scrollIntoView({
-
             behavior: "smooth",
-
             block: "start"
-
         });
 
     }
@@ -970,7 +1147,7 @@ function searchNews() {
 
 
 // ======================================================
-// 17. LOAD NEWS WHEN WEBSITE OPENS
+// 18. LOAD NEWS WHEN WEBSITE OPENS
 // ======================================================
 
 loadPublishedNews();
