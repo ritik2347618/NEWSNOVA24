@@ -1,16 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>NEWSNOVA24 - Latest News</title>
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- FONT AWESOME -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    >
+
+</head>
+
+<!-- -----=============================----Google Analytics Code ---=====================================================------>
+        
+<!-- -----=============================--------====== ---=====================================================------>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RCVV2LDKEQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RCVV2LDKEQ');
+</script>
+
+<body>
+
+
 <!-- =====================================================
-     ABOUT NEWSNOVA24 SECTION
+     TOP BAR
 ===================================================== -->
 
-<section class="about-section" id="about">
+<div class="top-bar">
+
+    <div class="date" id="date"></div>
+
+    <div class="social">
+
+        <a href="#" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+
+        <a href="#" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+
+        <a href="#" aria-label="X">
+            <i class="fab fa-x-twitter"></i>
+        </a>
+
+        <a href="#" aria-label="YouTube">
+            <i class="fab fa-youtube"></i>
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+    <div class="logo">
+
+        <a href="index.html">
+
+            <img
+                src="News Nova 24 logo.jpeg"
+                alt="NEWSNOVA24 Logo"
+            >
+
+        </a>
+
+    </div>
+
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            placeholder="Search News..."
+            aria-label="Search News"
+        >
+
+        <button
+            type="button"
+            aria-label="Search"
+        >
+            <i class="fas fa-search"></i>
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     NAVIGATION
+     Desktop + Mobile Hamburger Menu
+===================================================== -->
+
+<nav class="main-nav">
+
+    <!-- MOBILE NAVIGATION HEADER -->
+
+    <div class="mobile-nav-header">
+
+        <span class="mobile-brand">
+            NEWSNOVA24
+        </span>
+
+        <button
+            type="button"
+            class="menu-toggle"
+            id="menu-toggle"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+        >
+            <i class="fas fa-bars"></i>
+        </button>
+
+    </div>
+
+
+    <!-- NAVIGATION LINKS -->
+
+    <ul id="nav-menu">
+
+        <li>
+            <a href="#" class="active">Home</a>
+        </li>
+
+        <li>
+            <a href="#">India</a>
+        </li>
+
+        <li>
+            <a href="#">World</a>
+        </li>
+
+        <li>
+            <a href="#">Politics</a>
+        </li>
+
+        <li>
+            <a href="#">Business</a>
+        </li>
+
+        <li>
+            <a href="#">Technology</a>
+        </li>
+
+        <li>
+            <a href="#">Sports</a>
+        </li>
+
+        <li>
+            <a href="#">Entertainment</a>
+        </li>
+
+        <li>
+            <a href="#">Health</a>
+        </li>
+
+        <li>
+            <a href="#about">About</a>
+        </li>
+
+        <li>
+            <a href="#contact">Contact</a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- =====================================================
+     BREAKING NEWS
+===================================================== -->
+
+<section class="breaking-news">
+
+    <span>
+        🔴 BREAKING
+    </span>
+
+    <marquee>
+        Welcome to NEWSNOVA24 |
+        India |
+        World |
+        Technology |
+        Sports |
+        Business |
+        Politics
+    </marquee>
+
+</section>
+
+
+<!-- =====================================================
+     HERO SECTION
+===================================================== -->
+
+<section class="hero">
+
+
+    <!-- MAIN NEWS -->
+
+    <div class="left-news">
+
+        <img
+            src="https://picsum.photos/900/500"
+            alt="Top News"
+        >
+
+        <div class="overlay">
+
+            <h1>
+                Top Breaking News Headline
+            </h1>
+
+            <p>
+                Stay updated with the latest and fastest
+                news from India and around the world.
+            </p>
+
+            <button type="button">
+                Read More
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- RIGHT NEWS -->
+
+    <div class="right-news">
+
+
+        <!-- TECHNOLOGY -->
+
+        <div class="small-news">
+
+            <img
+                src="https://picsum.photos/200/120"
+                alt="Technology News"
+            >
+
+            <div>
+
+                <h3>
+                    Technology News
+                </h3>
+
+                <p>
+                    Artificial Intelligence is changing
+                    the future.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- SPORTS -->
+
+        <div class="small-news">
+
+            <img
+                src="https://picsum.photos/201/120"
+                alt="Sports News"
+            >
+
+            <div>
+
+                <h3>
+                    Sports News
+                </h3>
+
+                <p>
+                    India wins another thrilling match.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- BUSINESS -->
+
+        <div class="small-news">
+
+            <img
+                src="https://picsum.photos/202/120"
+                alt="Business News"
+            >
+
+            <div>
+
+                <h3>
+                    Business
+                </h3>
+
+                <p>
+                    Sensex crosses a new milestone.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- WORLD -->
+
+        <div class="small-news">
+
+            <img
+                src="https://picsum.photos/203/120"
+                alt="World News"
+            >
+
+            <div>
+
+                <h3>
+                    World News
+                </h3>
+
+                <p>
+                    International leaders meet for summit.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     LATEST NEWS
+===================================================== -->
+
+<section
+    class="latest-news"
+    id="latest-news-section"
+>
+
+    <div
+        class="latest-container"
+        id="latest-news-container"
+    >
+
+        <h2
+            class="latest-title"
+            id="latest-news-title"
+        >
+            Latest News
+        </h2>
+
+
+        <div
+            class="news-grid"
+            id="news-container"
+        >
+
+            <!--
+                MongoDB se published news
+                JavaScript ke through yahan load hogi.
+            -->
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ABOUT SECTION
+===================================================== -->
+
+<section
+    class="about-section"
+    id="about"
+>
 
     <div class="about-container">
+
 
         <h2>
             About NEWSNOVA24
         </h2>
 
+
         <p>
+
             NEWSNOVA24 is an independent digital news
             platform committed to delivering fast,
             accurate, and trustworthy news.
@@ -22,29 +436,25 @@
             Our mission is to keep readers informed
             with reliable journalism and modern
             digital storytelling.
+
         </p>
 
-    </div>
 
-</section>
+        <!-- =================================================
+             OUR LEADERSHIP
+        ================================================== -->
 
-
-<!-- =====================================================
-     OUR LEADERSHIP SECTION
-===================================================== -->
-
-<section class="leadership-section" id="leadership">
-
-    <div class="about-container">
-
-        <h2>
+        <h2 style="margin-top:60px;">
             Our Leadership
         </h2>
+
 
         <div class="team">
 
 
-            <!-- ABHISHEK TIWARI -->
+            <!-- =============================================
+                 ABHISHEK TIWARI
+            ============================================== -->
 
             <div class="member-card">
 
@@ -71,7 +481,9 @@
             </div>
 
 
-            <!-- RITIK KUMAR -->
+            <!-- =============================================
+                 RITIK KUMAR
+            ============================================== -->
 
             <div class="member-card">
 
@@ -98,7 +510,9 @@
             </div>
 
 
-            <!-- PRAVEEN KUMAR GUPTA -->
+            <!-- =============================================
+                 PRAVEEN KUMAR GUPTA
+            ============================================== -->
 
             <div class="member-card">
 
@@ -129,3 +543,590 @@
     </div>
 
 </section>
+
+
+<!-- =====================================================
+     RITIK KUMAR PROFILE
+===================================================== -->
+
+<section
+    id="ritik"
+    class="profile-details"
+>
+
+    <img
+        src="Ritik image.jpeg"
+        alt="Ritik Kumar"
+    >
+
+
+    <h2>
+        Ritik Kumar
+    </h2>
+
+
+    <h4>
+        Co-Founder | Technical Head
+    </h4>
+
+
+    <p class="intro">
+
+        Building the future of digital journalism
+        through technology and innovation.
+
+    </p>
+
+
+    <div class="info-grid">
+
+
+        <!-- QUALIFICATION -->
+
+        <div class="info-box">
+
+            <h3>
+                🎓 Qualification
+            </h3>
+
+            <p>
+                B.Tech - Computer Science Engineering
+                (AI & ML)
+            </p>
+
+        </div>
+
+
+        <!-- EXPERTISE -->
+
+        <div class="info-box">
+
+            <h3>
+                💻 Expertise
+            </h3>
+
+            <p>
+                Website Management &
+                Full Stack Development
+            </p>
+
+        </div>
+
+
+        <!-- ROLE -->
+
+        <div class="info-box">
+
+            <h3>
+                🚀 Role
+            </h3>
+
+            <p>
+                Website Development,
+                UI/UX,
+                SEO,
+                Backend Integration
+                & Security
+            </p>
+
+        </div>
+
+
+        <!-- VISION -->
+
+        <div class="info-box">
+
+            <h3>
+                🎯 Vision
+            </h3>
+
+            <p>
+                To make NEWSNOVA24 one of India's
+                fastest and most trusted digital
+                news platforms.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="social-links">
+
+        <a
+            href="https://www.linkedin.com/in/ritik-kumar-68846b2a2"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+        >
+            <i class="fab fa-linkedin"></i>
+        </a>
+
+
+
+        <a href="mailto:ritiknewsnova24@gmail.com"
+   aria-label="Email Ritik Kumar"
+   title="Email Ritik Kumar">
+    <i class="fas fa-envelope"></i>
+</a>
+
+
+        <a href="#" aria-label="Website">
+            <i class="fas fa-globe"></i>
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ABHISHEK TIWARI PROFILE
+===================================================== -->
+
+<section
+    id="abhishek"
+    class="profile-details"
+>
+
+    <img
+        src="Abhishek Tiwari.jpeg"
+        alt="Abhishek Tiwari"
+    >
+
+
+    <h2>
+        Abhishek Tiwari
+    </h2>
+
+
+    <h4>
+        Co-Founder | News Editor
+    </h4>
+
+
+    <p class="intro">
+
+        Abhishek Tiwari is a dedicated journalist
+        at NEWSNOVA24, committed to delivering
+        accurate, unbiased, and timely news.
+
+        He specializes in news reporting,
+        content writing and fact-based journalism.
+
+    </p>
+
+
+    <div class="info-grid">
+
+
+        <!-- QUALIFICATION -->
+
+        <div class="info-box">
+
+            <h3>
+                🎓 Qualification
+            </h3>
+
+            <p>
+                Bachelor of journalism and mass communication
+            </p>
+
+        </div>
+
+
+        <!-- EXPERTISE -->
+
+        <div class="info-box">
+
+            <h3>
+                📰 Expertise
+            </h3>
+
+            <p>
+                1+ year of experience in news editing,
+                content management and digital journalism.
+                Skilled in reviewing, verifying and
+                publishing accurate and timely news.
+            </p>
+
+        </div>
+
+
+        <!-- ROLE -->
+
+        <div class="info-box">
+
+            <h3>
+                🚀 Role
+            </h3>
+
+            <p>
+                Reviewing, editing and publishing news
+                while ensuring every story is accurate,
+                credible and delivered to readers
+                in a timely manner.
+            </p>
+
+        </div>
+
+
+        <!-- VISION -->
+
+        <div class="info-box">
+
+            <h3>
+                🎯 Vision
+            </h3>
+
+            <p>
+                To make NEWSNOVA24 one of India's
+                fastest and most trusted digital
+                news platforms.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="social-links">
+
+        <a href="#" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+        </a>
+
+        <a href="#" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+
+        <a href="#" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+        </a>
+
+        <a href="#" aria-label="Website">
+            <i class="fas fa-globe"></i>
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PRAVEEN KUMAR GUPTA PROFILE
+===================================================== -->
+
+<section
+    id="praveen"
+    class="profile-details"
+>
+
+    <img
+        src="Praveen Kumar Gupta.jpeg"
+        alt="Praveen Kumar Gupta"
+    >
+
+
+    <h2>
+        Praveen Kumar Gupta
+    </h2>
+
+
+    <h4>
+        Co-Founder | Managing Editor
+    </h4>
+
+
+    <p class="intro">
+
+        Praveen Kumar Gupta serves as the
+        Co-Founder and Managing Editor of NEWSNOVA24.
+
+        He oversees editorial operations,
+        content planning, news quality and
+        publishing standards.
+
+    </p>
+
+
+    <div class="info-grid">
+
+
+        <!-- QUALIFICATION -->
+
+        <div class="info-box">
+
+            <h3>
+                🎓 Qualification
+            </h3>
+
+            <p>
+                B.Tech - Computer Science Engineering
+                (AI & ML)
+            </p>
+
+        </div>
+
+
+        <!-- EXPERTISE -->
+
+        <div class="info-box">
+
+            <h3>
+                📰 Expertise
+            </h3>
+
+            <p>
+                News Editing,
+                Content Management,
+                Editorial Planning
+                and Digital Journalism.
+            </p>
+
+        </div>
+
+
+        <!-- ROLE -->
+
+        <div class="info-box">
+
+            <h3>
+                🚀 Role
+            </h3>
+
+            <p>
+                Managing editorial operations,
+                reviewing news content,
+                coordinating the editorial team
+                and maintaining NEWSNOVA24's
+                publishing standards.
+            </p>
+
+        </div>
+
+
+        <!-- VISION -->
+
+        <div class="info-box">
+
+            <h3>
+                🎯 Vision
+            </h3>
+
+            <p>
+                To build NEWSNOVA24 into a fast,
+                credible and trusted digital
+                news platform.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="social-links">
+
+        <a href="#" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+        </a>
+
+        <a href="#" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+
+        <a href="#" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+        </a>
+
+        <a href="#" aria-label="Website">
+            <i class="fas fa-globe"></i>
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CONTACT SECTION
+===================================================== -->
+
+<section
+    class="contact-section"
+    id="contact"
+>
+
+    <div class="contact-container">
+
+
+        <h2>
+            Contact NEWSNOVA24
+        </h2>
+
+
+        <p class="contact-intro">
+
+            Have a news tip, story suggestion,
+            business inquiry, or feedback?
+
+            Get in touch with the NEWSNOVA24 team.
+
+        </p>
+
+
+        <div class="contact-grid">
+
+
+            <!-- =========================================
+                 EMAIL
+            ========================================== -->
+
+            <div class="contact-card">
+
+                <i class="fas fa-envelope"></i>
+
+                <h3>
+                    Email Us
+                </h3>
+
+                <p>
+                    For news tips, feedback and
+                    general inquiries
+                </p>
+
+                <a href="mailto:contact@newsnova24.com">
+
+                    <i class="fas fa-paper-plane"></i>
+
+                    Send Email
+
+                </a>
+
+            </div>
+
+
+            <!-- =========================================
+                 PHONE
+            ========================================== -->
+
+            <div class="contact-card">
+
+                <i class="fas fa-phone"></i>
+
+                <h3>
+                    Call Us
+                </h3>
+
+                <p>
+                    Contact our NEWSNOVA24 team
+                </p>
+
+                <a href="tel:+9198765XXXXX">
+
+                    <i class="fas fa-phone"></i>
+
+                    Call Now
+
+                </a>
+
+            </div>
+
+
+            <!-- =========================================
+                 WHATSAPP
+            ========================================== -->
+
+            <div class="contact-card">
+
+                <i class="fab fa-whatsapp"></i>
+
+                <h3>
+                    WhatsApp
+                </h3>
+
+                <p>
+                    Send news tips, photos,
+                    videos or information
+                </p>
+
+                <a
+                    href="https://wa.me/919876543210?text=Hello%20NEWSNOVA24%2C%20I%20want%20to%20contact%20your%20team."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <i class="fab fa-whatsapp"></i>
+
+                    Chat on WhatsApp
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- =============================================
+             SOCIAL MEDIA
+        ============================================== -->
+
+        <div class="contact-social">
+
+            <h3>
+                Follow NEWSNOVA24
+            </h3>
+
+
+            <div class="contact-social-icons">
+
+                <a
+                    href="#"
+                    aria-label="Facebook"
+                >
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+
+
+                <a
+                    href="#"
+                    aria-label="Instagram"
+                >
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+
+                <a
+                    href="#"
+                    aria-label="X"
+                >
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+
+
+                <a
+                    href="#"
+                    aria-label="YouTube"
+                >
+                    <i class="fab fa-youtube"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
