@@ -44,252 +44,227 @@
 <body>
 
 
-    <!-- ==========================================
-         LOGIN PAGE
-    =========================================== -->
+<!-- ==========================================
+     LOGIN PAGE
+=========================================== -->
 
-    <main class="login-page" id="login-page">
-
-
-        <!-- LOGIN CONTAINER -->
-
-        <div class="login-container" id="login-container">
+<main class="login-page" id="login-page">
 
 
-            <!-- =====================================
-                 LOGO
-            ====================================== -->
+    <!-- LOGIN CONTAINER -->
 
-            <div class="login-logo">
-
-                <a href="index.html">
-
-                    <img
-    src="newsnova24-logo.png"
-    alt="NEWSNOVA24"
-    id="login-logo-image"
->
-                    >
-
-                </a>
-
-            </div>
+    <div class="login-container" id="login-container">
 
 
+        <!-- =====================================
+             NEWSNOVA24 LOGO
+        ====================================== -->
 
-            <!-- =====================================
-                 LOGIN CARD
-            ====================================== -->
+        <div class="login-logo">
 
-            <div class="login-card" id="login-card">
+            <a href="index.html">
 
-
-                <!-- ADMIN ICON -->
-
-                <div class="admin-icon">
-
-                    <i class="fas fa-user-shield"></i>
-
-                </div>
-
-
-
-                <!-- HEADING -->
-
-                <h1 id="login-heading">
-
-                    Admin Login
-
-                </h1>
-
-
-                <p class="login-subtitle">
-
-                    NEWSNOVA24 Administration Panel
-
-                </p>
-
-
-
-                <!-- =====================================
-                     ERROR MESSAGE
-                ====================================== -->
-
-                <div
-                    class="login-message error-message"
-                    id="login-error"
-                    style="display:none;"
+                <img
+                    src="News Nova 24 logo.jpeg"
+                    alt="NEWSNOVA24 Logo"
+                    id="login-logo-image"
                 >
 
-                    <i class="fas fa-circle-exclamation"></i>
+            </a>
 
-                    <span id="login-error-text">
-                        Invalid username or password.
-                    </span>
+        </div>
 
-                </div>
 
+        <!-- =====================================
+             LOGIN CARD
+        ====================================== -->
 
+        <div class="login-card" id="login-card">
 
-                <!-- =====================================
-                     LOGIN FORM
-                ====================================== -->
 
-                <form id="admin-login-form">
+            <!-- ADMIN ICON -->
 
+            <div class="admin-icon">
 
-                    <!-- USERNAME -->
+                <i class="fas fa-user-shield"></i>
 
-                    <div class="input-group">
+            </div>
 
-                        <label for="admin-username">
 
-                            Username
+            <!-- HEADING -->
 
-                        </label>
+            <h1 id="login-heading">
 
+                Admin Login
 
-                        <div class="input-box">
+            </h1>
 
-                            <i class="fas fa-user"></i>
 
-                            <input
-                                type="text"
-                                id="admin-username"
-                                placeholder="Enter username"
-                                autocomplete="username"
-                                required
-                            >
+            <p class="login-subtitle">
 
-                        </div>
+                NEWSNOVA24 Administration Panel
 
-                    </div>
+            </p>
 
 
+            <!-- =====================================
+                 ERROR MESSAGE
+            ====================================== -->
 
-                    <!-- PASSWORD -->
+            <div
+                class="login-message error-message"
+                id="login-error"
+                style="display:none;"
+            >
 
-                    <div class="input-group">
+                <i class="fas fa-circle-exclamation"></i>
 
-                        <label for="admin-password">
-
-                            Password
-
-                        </label>
-
-
-                        <div class="input-box">
-
-                            <i class="fas fa-lock"></i>
-
-
-                            <input
-                                type="password"
-                                id="admin-password"
-                                placeholder="Enter password"
-                                autocomplete="current-password"
-                                required
-                            >
-
-
-                            <!-- SHOW PASSWORD -->
-
-                            <button
-                                type="button"
-                                id="toggle-password"
-                                class="toggle-password"
-                                aria-label="Show or hide password"
-                            >
-
-                                <i
-                                    class="fas fa-eye"
-                                    id="password-eye"
-                                ></i>
-
-                            </button>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- =====================================
-                         REMEMBER ME
-                    ====================================== -->
-
-                    <div class="login-options">
-
-                        <label class="remember-me">
-
-                            <input
-                                type="checkbox"
-                                id="remember-admin"
-                            >
-
-                            <span>
-                                Remember me
-                            </span>
-
-                        </label>
-
-                    </div>
-
-
-
-                    <!-- =====================================
-                         LOGIN BUTTON
-                    ====================================== -->
-
-                    <button
-                        type="submit"
-                        class="login-button"
-                        id="admin-login-button"
-                    >
-
-                        <i class="fas fa-right-to-bracket"></i>
-
-                        Login to Admin Panel
-
-                    </button>
-
-
-                </form>
-
-
-
-                <!-- =====================================
-                     BACK TO WEBSITE
-                ====================================== -->
-
-                <div class="back-website">
-
-                    <a
-                        href="index.html"
-                        id="back-to-website"
-                    >
-
-                        <i class="fas fa-arrow-left"></i>
-
-                        Back to NEWSNOVA24
-
-                    </a>
-
-                </div>
-
+                <span id="login-error-text">
+                    Invalid username or password.
+                </span>
 
             </div>
 
 
             <!-- =====================================
-                 SECURITY TEXT
+                 LOGIN FORM
             ====================================== -->
 
-            <div class="security-message">
+            <form id="admin-login-form">
 
-                <i class="fas fa-lock"></i>
 
-                Authorized administrators only
+                <!-- USERNAME -->
+
+                <div class="input-group">
+
+                    <label for="admin-username">
+
+                        Username
+
+                    </label>
+
+
+                    <div class="input-box">
+
+                        <i class="fas fa-user"></i>
+
+                        <input
+                            type="text"
+                            id="admin-username"
+                            placeholder="Enter username"
+                            autocomplete="username"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="input-group">
+
+                    <label for="admin-password">
+
+                        Password
+
+                    </label>
+
+
+                    <div class="input-box">
+
+                        <i class="fas fa-lock"></i>
+
+
+                        <input
+                            type="password"
+                            id="admin-password"
+                            placeholder="Enter password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+
+                        <!-- SHOW / HIDE PASSWORD -->
+
+                        <button
+                            type="button"
+                            id="toggle-password"
+                            class="toggle-password"
+                            aria-label="Show or hide password"
+                        >
+
+                            <i
+                                class="fas fa-eye"
+                                id="password-eye"
+                            ></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================
+                     REMEMBER ME
+                ====================================== -->
+
+                <div class="login-options">
+
+                    <label class="remember-me">
+
+                        <input
+                            type="checkbox"
+                            id="remember-admin"
+                        >
+
+                        <span>
+                            Remember me
+                        </span>
+
+                    </label>
+
+                </div>
+
+
+                <!-- =====================================
+                     LOGIN BUTTON
+                ====================================== -->
+
+                <button
+                    type="submit"
+                    class="login-button"
+                    id="admin-login-button"
+                >
+
+                    <i class="fas fa-right-to-bracket"></i>
+
+                    Login to Admin Panel
+
+                </button>
+
+
+            </form>
+
+
+            <!-- =====================================
+                 BACK TO WEBSITE
+            ====================================== -->
+
+            <div class="back-website">
+
+                <a
+                    href="index.html"
+                    id="back-to-website"
+                >
+
+                    <i class="fas fa-arrow-left"></i>
+
+                    Back to NEWSNOVA24
+
+                </a>
 
             </div>
 
@@ -297,15 +272,30 @@
         </div>
 
 
-    </main>
+        <!-- =====================================
+             SECURITY TEXT
+        ====================================== -->
+
+        <div class="security-message">
+
+            <i class="fas fa-lock"></i>
+
+            Authorized administrators only
+
+        </div>
 
 
+    </div>
 
-    <!-- ==========================================
-         JAVASCRIPT
-    =========================================== -->
 
-    <script src="login.js"></script>
+</main>
+
+
+<!-- ==========================================
+     JAVASCRIPT
+=========================================== -->
+
+<script src="login.js"></script>
 
 
 </body>

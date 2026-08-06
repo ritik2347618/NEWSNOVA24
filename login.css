@@ -2,16 +2,16 @@
    NEWSNOVA24 - ADMIN LOGIN
 ========================================== */
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins', sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-body{
-    min-height:100vh;
-    background:#f4f6f9;
+body {
+    min-height: 100vh;
+    background: #f4f6f9;
 }
 
 
@@ -19,21 +19,20 @@ body{
    LOGIN PAGE
 ========================================== */
 
-#login-page{
-    min-height:100vh;
+#login-page {
+    min-height: 100vh;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    padding:40px 20px;
+    padding: 40px 20px;
 
-    background:
-        linear-gradient(
-            135deg,
-            #071d3d,
-            #003399
-        );
+    background: linear-gradient(
+        135deg,
+        #071d3d,
+        #003399
+    );
 }
 
 
@@ -41,31 +40,43 @@ body{
    CONTAINER
 ========================================== */
 
-#login-container{
-    width:100%;
-    max-width:460px;
+#login-container {
+    width: 100%;
+    max-width: 460px;
 }
 
 
 /* ==========================================
-   LOGO
+   NEWSNOVA24 LOGO
 ========================================== */
 
-.login-logo{
-    text-align:center;
-    margin-bottom:25px;
+.login-logo {
+    text-align: center;
+    margin-bottom: 25px;
 }
 
-#login-logo-image{
-    width:230px;
-    max-width:80%;
-    margin:auto;
+.login-logo a {
+    display: inline-block;
+}
 
-    background:white;
+#login-logo-image {
+    display: block;
 
-    padding:8px 15px;
+    width: 250px;
+    max-width: 90%;
+    height: auto;
 
-    border-radius:8px;
+    margin: 0 auto;
+
+    background: #ffffff;
+
+    padding: 8px 12px;
+
+    border-radius: 10px;
+
+    object-fit: contain;
+
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.18);
 }
 
 
@@ -73,17 +84,17 @@ body{
    LOGIN CARD
 ========================================== */
 
-#login-card{
-    background:#ffffff;
+#login-card {
+    background: #ffffff;
 
-    padding:40px;
+    padding: 40px;
 
-    border-radius:18px;
+    border-radius: 18px;
 
     box-shadow:
-        0 15px 40px rgba(0,0,0,0.25);
+        0 15px 40px rgba(0, 0, 0, 0.25);
 
-    text-align:center;
+    text-align: center;
 }
 
 
@@ -91,23 +102,23 @@ body{
    ADMIN ICON
 ========================================== */
 
-.admin-icon{
-    width:80px;
-    height:80px;
+.admin-icon {
+    width: 80px;
+    height: 80px;
 
-    margin:0 auto 20px;
+    margin: 0 auto 20px;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    background:#003399;
+    background: #003399;
 
-    color:#ffffff;
+    color: #ffffff;
 
-    border-radius:50%;
+    border-radius: 50%;
 
-    font-size:32px;
+    font-size: 32px;
 }
 
 
@@ -115,20 +126,20 @@ body{
    HEADING
 ========================================== */
 
-#login-heading{
-    color:#003399;
+#login-heading {
+    color: #003399;
 
-    font-size:30px;
+    font-size: 30px;
 
-    margin-bottom:5px;
+    margin-bottom: 5px;
 }
 
-.login-subtitle{
-    color:#777;
+.login-subtitle {
+    color: #777;
 
-    font-size:14px;
+    font-size: 14px;
 
-    margin-bottom:30px;
+    margin-bottom: 30px;
 }
 
 
@@ -136,22 +147,22 @@ body{
    INPUT GROUP
 ========================================== */
 
-.input-group{
-    text-align:left;
+.input-group {
+    text-align: left;
 
-    margin-bottom:22px;
+    margin-bottom: 22px;
 }
 
-.input-group label{
-    display:block;
+.input-group label {
+    display: block;
 
-    margin-bottom:8px;
+    margin-bottom: 8px;
 
-    font-size:14px;
+    font-size: 14px;
 
-    font-weight:600;
+    font-weight: 600;
 
-    color:#333;
+    color: #333;
 }
 
 
@@ -159,45 +170,47 @@ body{
    INPUT BOX
 ========================================== */
 
-.input-box{
-    display:flex;
-    align-items:center;
+.input-box {
+    display: flex;
+    align-items: center;
 
-    border:2px solid #dddddd;
+    border: 2px solid #dddddd;
 
-    border-radius:8px;
+    border-radius: 8px;
 
-    overflow:hidden;
+    overflow: hidden;
 
-    transition:0.3s;
+    transition: 0.3s;
 }
 
-.input-box:focus-within{
-    border-color:#003399;
+.input-box:focus-within {
+    border-color: #003399;
 
     box-shadow:
-        0 0 0 3px rgba(0,51,153,0.10);
+        0 0 0 3px rgba(0, 51, 153, 0.10);
 }
 
-.input-box > i{
-    color:#003399;
+.input-box > i {
+    color: #003399;
 
-    margin-left:15px;
+    margin-left: 15px;
 
-    font-size:16px;
+    font-size: 16px;
 }
 
-.input-box input{
-    flex:1;
+.input-box input {
+    flex: 1;
 
-    border:none;
-    outline:none;
+    border: none;
+    outline: none;
 
-    padding:14px 12px;
+    padding: 14px 12px;
 
-    font-size:15px;
+    font-size: 15px;
 
-    background:transparent;
+    background: transparent;
+
+    min-width: 0;
 }
 
 
@@ -205,23 +218,26 @@ body{
    SHOW PASSWORD
 ========================================== */
 
-.toggle-password{
-    width:50px;
-    height:48px;
+.toggle-password {
+    width: 50px;
+    height: 48px;
 
-    border:none;
+    border: none;
 
-    background:transparent;
+    background: transparent;
 
-    color:#777;
+    color: #777;
 
-    cursor:pointer;
+    cursor: pointer;
 
-    font-size:16px;
+    font-size: 16px;
+
+    transition: 0.3s;
 }
 
-.toggle-password:hover{
-    color:#003399;
+.toggle-password:hover {
+    color: #003399;
+    background: #f4f6f9;
 }
 
 
@@ -229,35 +245,35 @@ body{
    REMEMBER ME
 ========================================== */
 
-.login-options{
-    display:flex;
+.login-options {
+    display: flex;
 
-    justify-content:space-between;
+    justify-content: space-between;
 
-    align-items:center;
+    align-items: center;
 
-    margin-bottom:25px;
+    margin-bottom: 25px;
 }
 
-.remember-me{
-    display:flex;
+.remember-me {
+    display: flex;
 
-    align-items:center;
+    align-items: center;
 
-    gap:8px;
+    gap: 8px;
 
-    cursor:pointer;
+    cursor: pointer;
 
-    font-size:14px;
+    font-size: 14px;
 
-    color:#555;
+    color: #555;
 }
 
-.remember-me input{
-    width:16px;
-    height:16px;
+.remember-me input {
+    width: 16px;
+    height: 16px;
 
-    accent-color:#003399;
+    accent-color: #003399;
 }
 
 
@@ -265,39 +281,39 @@ body{
    LOGIN BUTTON
 ========================================== */
 
-#admin-login-button{
-    width:100%;
+#admin-login-button {
+    width: 100%;
 
-    border:none;
+    border: none;
 
-    background:#003399;
+    background: #003399;
 
-    color:#ffffff;
+    color: #ffffff;
 
-    padding:14px;
+    padding: 14px;
 
-    border-radius:8px;
+    border-radius: 8px;
 
-    font-size:16px;
+    font-size: 16px;
 
-    font-weight:600;
+    font-weight: 600;
 
-    cursor:pointer;
+    cursor: pointer;
 
-    transition:0.3s;
+    transition: 0.3s;
 }
 
-#admin-login-button i{
-    margin-right:7px;
+#admin-login-button i {
+    margin-right: 7px;
 }
 
-#admin-login-button:hover{
-    background:#e60023;
+#admin-login-button:hover {
+    background: #e60023;
 
-    transform:translateY(-2px);
+    transform: translateY(-2px);
 
     box-shadow:
-        0 6px 15px rgba(230,0,35,0.25);
+        0 6px 15px rgba(230, 0, 35, 0.25);
 }
 
 
@@ -305,26 +321,26 @@ body{
    ERROR MESSAGE
 ========================================== */
 
-#login-error{
-    background:#ffe9ec;
+#login-error {
+    background: #ffe9ec;
 
-    color:#c4001d;
+    color: #c4001d;
 
-    padding:12px 15px;
+    padding: 12px 15px;
 
-    border-left:4px solid #e60023;
+    border-left: 4px solid #e60023;
 
-    border-radius:5px;
+    border-radius: 5px;
 
-    margin-bottom:20px;
+    margin-bottom: 20px;
 
-    font-size:14px;
+    font-size: 14px;
 
-    text-align:left;
+    text-align: left;
 }
 
-#login-error i{
-    margin-right:6px;
+#login-error i {
+    margin-right: 6px;
 }
 
 
@@ -332,32 +348,32 @@ body{
    BACK TO WEBSITE
 ========================================== */
 
-.back-website{
-    margin-top:25px;
+.back-website {
+    margin-top: 25px;
 
-    padding-top:20px;
+    padding-top: 20px;
 
-    border-top:1px solid #eeeeee;
+    border-top: 1px solid #eeeeee;
 }
 
-#back-to-website{
-    color:#003399;
+#back-to-website {
+    color: #003399;
 
-    font-size:14px;
+    font-size: 14px;
 
-    font-weight:600;
+    font-weight: 600;
 
-    text-decoration:none;
+    text-decoration: none;
 
-    transition:0.3s;
+    transition: 0.3s;
 }
 
-#back-to-website:hover{
-    color:#e60023;
+#back-to-website:hover {
+    color: #e60023;
 }
 
-#back-to-website i{
-    margin-right:5px;
+#back-to-website i {
+    margin-right: 5px;
 }
 
 
@@ -365,20 +381,20 @@ body{
    SECURITY MESSAGE
 ========================================== */
 
-.security-message{
-    text-align:center;
+.security-message {
+    text-align: center;
 
-    margin-top:20px;
+    margin-top: 20px;
 
-    color:#ffffff;
+    color: #ffffff;
 
-    font-size:13px;
+    font-size: 13px;
 
-    opacity:0.85;
+    opacity: 0.85;
 }
 
-.security-message i{
-    margin-right:5px;
+.security-message i {
+    margin-right: 5px;
 }
 
 
@@ -386,29 +402,53 @@ body{
    MOBILE
 ========================================== */
 
-@media(max-width:500px){
+@media (max-width: 500px) {
 
-    #login-page{
-        padding:25px 15px;
+    #login-page {
+        padding: 25px 15px;
     }
 
-    #login-card{
-        padding:30px 20px;
+    #login-card {
+        padding: 30px 20px;
     }
 
-    #login-heading{
-        font-size:26px;
+    #login-heading {
+        font-size: 26px;
     }
 
-    .admin-icon{
-        width:70px;
-        height:70px;
+    .admin-icon {
+        width: 70px;
+        height: 70px;
 
-        font-size:28px;
+        font-size: 28px;
     }
 
-    #login-logo-image{
-        width:190px;
+    #login-logo-image {
+        width: 210px;
+        max-width: 85%;
+
+        padding: 6px 10px;
+    }
+
+}
+
+
+/* ==========================================
+   VERY SMALL MOBILE
+========================================== */
+
+@media (max-width: 350px) {
+
+    #login-card {
+        padding: 25px 15px;
+    }
+
+    #login-logo-image {
+        width: 180px;
+    }
+
+    #admin-login-button {
+        font-size: 14px;
     }
 
 }
