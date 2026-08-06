@@ -25,31 +25,54 @@ if (dateElement) {
 
 
 // ======================================================
-// 2. BREAKING NEWS
+// 2. BREAKING NEWS - LATEST MONGODB NEWS
 // ======================================================
 
-const breakingNews = [
-
-    "India launches new satellite",
-    "Breaking News from Bihar",
-    "Stock Market reaches new high",
-    "AI Revolution starts",
-    "Cricket World Cup Updates"
-
-];
-
 let breakingIndex = 0;
+let breakingNews = [];
 
 const marqueeElement =
     document.querySelector("marquee");
 
-if (marqueeElement) {
 
+function updateBreakingTicker(newsList) {
+
+    if (!Array.isArray(newsList) || newsList.length === 0) {
+        return;
+    }
+
+    // Latest news sabse pehle
+    const latestNews = [...newsList].sort(
+        function (a, b) {
+
+            return new Date(b.createdAt || 0) -
+                   new Date(a.createdAt || 0);
+        }
+    );
+
+    // Latest 5 news ke titles
+    breakingNews = latestNews
+        .slice(0, 5)
+        .map(function (article) {
+            return article.title;
+        })
+        .filter(Boolean);
+
+
+    if (breakingNews.length === 0 || !marqueeElement) {
+        return;
+    }
+
+
+    // Latest news turant show karo
+    breakingIndex = 0;
+
+    marqueeElement.textContent =
+        "🔴 BREAKING : " + breakingNews[0];
+
+
+    // Har 4 second me next latest headline
     setInterval(function () {
-
-        marqueeElement.innerHTML =
-            "🔴 BREAKING : " +
-            breakingNews[breakingIndex];
 
         breakingIndex++;
 
@@ -57,8 +80,11 @@ if (marqueeElement) {
             breakingIndex = 0;
         }
 
-    }, 3000);
+        marqueeElement.textContent =
+            "🔴 BREAKING : " +
+            breakingNews[breakingIndex];
 
+    }, 4000);
 }
 
 
@@ -473,6 +499,9 @@ async function loadPublishedNews() {
 
         allPublishedNews =
             publishedNews;
+
+            
+updateBreakingTicker(allPublishedNews);
 
 updateTopBreakingNews(
     allPublishedNews
