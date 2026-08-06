@@ -2034,93 +2034,78 @@ header{
     font-size: 14px;
 }
 
-/* ======================================================
-   PROFESSIONAL FOOTER
-====================================================== */
+/* ==========================
+   SIMPLE FOOTER
+========================== */
 
-.footer{
+.simple-footer{
     width:100%;
-    background:#232945;
+    background:#2b3150;
     border-top:1px solid rgba(255,255,255,.08);
-    padding:28px 8%;
+    padding:20px 8%;
 }
 
-.footer-container{
+.simple-footer-container{
     max-width:1400px;
     margin:auto;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    gap:20px;
     flex-wrap:wrap;
+    gap:15px;
 }
 
-.footer-left p{
-    color:#bfc6da;
+.footer-copy{
+    color:#9aa6c3;
     font-size:15px;
-    margin:0;
+    font-weight:400;
 }
 
-.footer-left strong{
+.footer-copy strong{
     color:#ffffff;
-    font-weight:600;
 }
 
-.footer-right{
+.footer-links{
     display:flex;
     align-items:center;
+    gap:25px;
     flex-wrap:wrap;
-    gap:22px;
 }
 
-.footer-right a{
-    color:#bfc6da;
+.footer-links a{
+    color:#9aa6c3;
     font-size:15px;
+    text-decoration:none;
     transition:.3s;
 }
 
-.footer-right a:hover{
+.footer-links a:hover{
     color:#ffffff;
 }
 
-.footer-right a::after{
-    content:"";
-    display:block;
-    width:0;
-    height:2px;
-    background:#e60023;
-    transition:.3s;
-}
-
-.footer-right a:hover::after{
-    width:100%;
-}
-
-/* ===========================
-   MOBILE
-=========================== */
+/* Mobile */
 
 @media(max-width:768px){
 
-.footer{
-    padding:25px 15px;
+.simple-footer{
+    padding:18px 15px;
 }
 
-.footer-container{
+.simple-footer-container{
     flex-direction:column;
     text-align:center;
 }
 
-.footer-right{
+.footer-links{
     justify-content:center;
-    gap:15px;
+    gap:18px;
 }
 
-.footer-right a{
+.footer-copy{
     font-size:14px;
 }
 
-.footer-left p{
+.footer-links a{
     font-size:14px;
 }
 
