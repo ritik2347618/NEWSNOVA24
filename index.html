@@ -84,123 +84,63 @@
 <!-- =====================================================
      HEADER
 ===================================================== -->
-
-<header>
-
-    <div class="logo">
-
-        <a href="index.html">
-
-            <img
-                src="News Nova 24 logo.jpeg"
-                alt="NEWSNOVA24 Logo"
-            >
-
-        </a>
-
-    </div>
-
-
-    <div class="search-box">
-
-        <input
-            type="text"
-            placeholder="Search News..."
-            aria-label="Search News"
-        >
-
-        <button
-            type="button"
-            aria-label="Search"
-        >
-            <i class="fas fa-search"></i>
-        </button>
-
-    </div>
-
-</header>
-
-
 <!-- =====================================================
-     NAVIGATION
-     Desktop + Mobile Hamburger Menu
+     COMPACT HEADER + NAVIGATION
 ===================================================== -->
 
 <nav class="main-nav">
 
-    <!-- MOBILE NAVIGATION HEADER -->
+    <div class="nav-container">
 
-    <div class="mobile-nav-header">
+        <!-- Logo -->
+        <a href="index.html" class="nav-logo">
+            <img src="News Nova 24 logo.jpeg" alt="NEWSNOVA24">
+        </a>
 
-        <span class="mobile-brand">
-            NEWSNOVA24
-        </span>
+        <!-- Desktop Menu -->
+        <ul id="nav-menu">
 
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">India</a></li>
+            <li><a href="#">World</a></li>
+            <li><a href="#">Politics</a></li>
+            <li><a href="#">Business</a></li>
+            <li><a href="#">Technology</a></li>
+            <li><a href="#">Sports</a></li>
+            <li><a href="#">Entertainment</a></li>
+            <li><a href="#">Health</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+
+        </ul>
+
+        <!-- Search -->
+        <div class="nav-search">
+
+            <input
+                type="text"
+                placeholder="Search News..."
+            >
+
+            <button type="button">
+                <i class="fas fa-search"></i>
+            </button>
+
+        </div>
+
+        <!-- Mobile Menu -->
         <button
-            type="button"
             class="menu-toggle"
             id="menu-toggle"
-            aria-label="Open navigation menu"
-            aria-expanded="false"
-        >
+            aria-label="Open Menu">
+
             <i class="fas fa-bars"></i>
+
         </button>
 
     </div>
 
-
-    <!-- NAVIGATION LINKS -->
-
-    <ul id="nav-menu">
-
-        <li>
-            <a href="#" class="active">Home</a>
-        </li>
-
-        <li>
-            <a href="#">India</a>
-        </li>
-
-        <li>
-            <a href="#">World</a>
-        </li>
-
-        <li>
-            <a href="#">Politics</a>
-        </li>
-
-        <li>
-            <a href="#">Business</a>
-        </li>
-
-        <li>
-            <a href="#">Technology</a>
-        </li>
-
-        <li>
-            <a href="#">Sports</a>
-        </li>
-
-        <li>
-            <a href="#">Entertainment</a>
-        </li>
-
-        <li>
-            <a href="#">Health</a>
-        </li>
-
-        <li>
-            <a href="#about">About</a>
-        </li>
-
-        <li>
-            <a href="#contact">Contact</a>
-        </li>
-
-    </ul>
-
 </nav>
-
 
 <!-- =====================================================
      BREAKING NEWS
