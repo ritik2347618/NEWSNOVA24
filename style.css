@@ -97,7 +97,7 @@ button{
 .main-header{
 
     width:100%;
-    height:55px;
+    height: 45px;
 
     background:#252b4b;
 
@@ -227,7 +227,7 @@ background:#c4001f;
 
 .mobile-logo img{
 
-    width:95px;
+    width:75px;
 
 }
 
@@ -1566,9 +1566,9 @@ background:#c4001f;
     .mobile-nav-header{
         width:100%;
 
-        min-height:54px;
+        min-height:42px;
 
-        padding:10px 15px;
+        padding:4px 10px;
 
         display:flex;
 
