@@ -349,13 +349,9 @@ function showPraveen() {
 // 10. CONTACT SECTION
 // ======================================================
 
-const contactLink =
-    document.querySelector(
-        'a[href="#contact"]'
-    );
+const contactLinks = document.querySelectorAll('a[href="#contact"]');
 
-
-if (contactLink) {
+contactLinks.forEach(function (contactLink) {
 
     contactLink.addEventListener(
         "click",
@@ -364,9 +360,7 @@ if (contactLink) {
             event.preventDefault();
 
             const contactSection =
-                document.getElementById(
-                    "contact"
-                );
+                document.getElementById("contact");
 
             if (contactSection) {
 
@@ -384,20 +378,15 @@ if (contactLink) {
         }
     );
 
-}
-
-
+});
 // ======================================================
 // 11. ABOUT SECTION
 // ======================================================
 
-const aboutLink =
-    document.querySelector(
-        'a[href="#about"]'
-    );
 
+const aboutLinks = document.querySelectorAll('a[href="#about"]');
 
-if (aboutLink) {
+aboutLinks.forEach(function (aboutLink) {
 
     aboutLink.addEventListener(
         "click",
@@ -406,9 +395,7 @@ if (aboutLink) {
             event.preventDefault();
 
             const aboutSection =
-                document.getElementById(
-                    "about"
-                );
+                document.getElementById("about");
 
             if (aboutSection) {
 
@@ -426,9 +413,7 @@ if (aboutLink) {
         }
     );
 
-}
-
-
+});
 // ======================================================
 // 12. NEWS CONTAINER
 // ======================================================
@@ -770,9 +755,8 @@ const categoryNames = [
 
 const navLinks =
     document.querySelectorAll(
-        "#nav-menu a"
+        "#nav-menu a, .desktop-menu a"
     );
-
 
 // ======================================================
 // ACTIVE NAVIGATION
