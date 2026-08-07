@@ -1509,28 +1509,16 @@ background:#c4001f;
     ================================================== */
 
     header{
-        padding:14px 15px;
-
-        flex-direction:column;
-
-        justify-content:center;
-
-        gap:14px;
-    }
-
-    .logo{
-        width:100%;
-
-        display:flex;
-
-        justify-content:center;
-    }
-
-   .logo img{
-    width:70px;
-    height:auto;
+    padding:6px 12px;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
 }
 
+.logo img{
+    width:90px;
+    height:auto;
+}
 
     /* ==================================================
        SEARCH
@@ -2263,118 +2251,55 @@ background:#c4001f;
 
 @media (max-width:768px){
 
-    .desktop-menu{
-        display:none;
-    }
-
+    .desktop-menu,
     .header-icons{
         display:none;
     }
 
-    /*================ MOBILE MENU FIX =================*/
-
-@media(max-width:768px){
-
-.desktop-menu{
-
-display:none;
-
-}
-
-.main-nav{
-
-display:block;
-
-position:relative;
-
-}
-
-#nav-menu{
-
-display:none;
-
-flex-direction:column;
-
-background:#003399;
-
-width:100%;
-
-}
-
-#nav-menu.mobile-menu-open{
-
-display:flex;
-
-animation:slideDown .3s ease;
-
-}
-
-#nav-menu li{
-
-width:100%;
-
-border-bottom:1px solid rgba(255,255,255,.15);
-
-}
-
-#nav-menu li a{
-
-display:block;
-
-padding:15px 20px;
-
-font-size:16px;
-
-font-weight:600;
-
-}
-
-.mobile-nav-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 15px;
-    min-height: 60px;
-}
-
-.mobile-logo img{
-    width: 110px;
-    height: auto;
-}
-}
-
-
-
-@keyframes slideDown{
-
-from{
-
-opacity:0;
-
-transform:translateY(-10px);
-
-}
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-}
-
     .main-nav{
         display:block;
+        position:relative;
     }
 
     .mobile-nav-header{
         display:flex;
         justify-content:space-between;
         align-items:center;
-        padding:12px 20px;
+        padding:8px 12px;
+        min-height:50px;
     }
 
+    .mobile-logo img{
+        width:90px;
+        height:auto;
+    }
+
+    .menu-toggle{
+        width:38px;
+        height:38px;
+        font-size:18px;
+    }
+
+    #nav-menu{
+        display:none;
+        flex-direction:column;
+        width:100%;
+        background:#003399;
+    }
+
+    #nav-menu.mobile-menu-open{
+        display:flex;
+    }
+
+    #nav-menu li{
+        width:100%;
+        border-bottom:1px solid rgba(255,255,255,.15);
+    }
+
+    #nav-menu li a{
+        display:block;
+        padding:14px 18px;
+        font-size:15px;
+    }
 }
 
