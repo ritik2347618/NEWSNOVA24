@@ -85,35 +85,42 @@
      HEADER
 ===================================================== -->
 
-<header>
+<header class="main-header">
 
     <div class="logo">
-
         <a href="index.html">
-
-            <img
-                src="News Nova 24 logo.jpeg"
-                alt="NEWSNOVA24 Logo"
-            >
-
+            <img src="News Nova 24 logo.png" alt="NEWSNOVA24">
         </a>
-
     </div>
 
+    <nav class="desktop-menu">
 
-    <div class="search-box">
+        <a href="#" class="active">Home</a>
+        <a href="#">India</a>
+        <a href="#">World</a>
+        <a href="#">Politics</a>
+        <a href="#">Business</a>
+        <a href="#">Technology</a>
+        <a href="#">Sports</a>
+        <a href="#">Entertainment</a>
+        <a href="#">Health</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
 
-        <input
-            type="text"
-            placeholder="Search News..."
-            aria-label="Search News"
-        >
+    </nav>
+
+    <div class="header-icons">
+
+        <button class="search-btn">
+            <i class="fas fa-search"></i>
+        </button>
 
         <button
-            type="button"
-            aria-label="Search"
-        >
-            <i class="fas fa-search"></i>
+            class="menu-toggle"
+            id="menu-toggle">
+
+            <i class="fas fa-bars"></i>
+
         </button>
 
     </div>
@@ -129,26 +136,41 @@
 <nav class="main-nav">
 
     <!-- MOBILE NAVIGATION HEADER -->
-
+     
     <div class="mobile-nav-header">
 
-        <span class="mobile-brand">
-            NEWSNOVA24
-        </span>
+    <div class="mobile-logo">
+
+        <img
+            src="News Nova 24 logo.png"
+            alt="NEWSNOVA24">
+
+    </div>
+
+    <div class="mobile-icons">
+
+        <button
+            class="mobile-search">
+
+            <i class="fas fa-search"></i>
+
+        </button>
 
         <button
             type="button"
             class="menu-toggle"
             id="menu-toggle"
             aria-label="Open navigation menu"
-            aria-expanded="false"
-        >
+            aria-expanded="false">
+
             <i class="fas fa-bars"></i>
+
         </button>
 
     </div>
 
-
+</div>
+   
     <!-- NAVIGATION LINKS -->
 
     <ul id="nav-menu">
