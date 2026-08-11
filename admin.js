@@ -104,6 +104,30 @@ if (newsImageInput) {
     });
 }
 
+// ==================================================
+// CONVERT IMAGE TO BASE64
+// ==================================================
+
+function imageToBase64(file) {
+
+    return new Promise((resolve, reject) => {
+
+        const reader = new FileReader();
+
+        reader.onload = () => {
+            resolve(reader.result);
+        };
+
+        reader.onerror = () => {
+            reject(new Error("Unable to read image"));
+        };
+
+        reader.readAsDataURL(file);
+
+    });
+
+}
+
 
 // ======================================================
 // 4. PUBLISH / UPDATE NEWS
@@ -155,25 +179,42 @@ if (newsForm) {
         }
 
 
-        // ==================================================
-        // CREATE FORMDATA
-        // ==================================================
+       // ==================================================
+// PREPARE NEWS DATA
+// ==================================================
 
-        const formData = new FormData();
+let imageData = existingImage || "";
 
-        formData.append("title", title);
-        formData.append("category", category);
-        formData.append("author", author);
-        formData.append("description", description);
-        formData.append("content", content);
+if (imageFile) {
 
-        if (imageFile) {
-            formData.append("image", imageFile);
-        }
+    try {
 
-        if (editingArticleId && existingImage) {
-            formData.append("existingImage", existingImage);
-        }
+        imageData = await imageToBase64(imageFile);
+
+    } catch (error) {
+
+        alert("Unable to process the selected image.");
+        return;
+
+    }
+
+}
+
+// ==================================================
+// JSON DATA
+// ==================================================
+
+const newsData = {
+
+    title: title,
+    category: category,
+    author: author,
+    image: imageData,
+    description: description,
+    content: content
+
+};
+
 
 
         // ==================================================
@@ -184,29 +225,41 @@ if (newsForm) {
 
             let response;
 
-            if (editingArticleId) {
+           if (editingArticleId) {
 
-                response = await fetch(
-                    `/api/news/${editingArticleId}`,
-                    {
-                        method: "PUT",
-                        body: formData,
-                        credentials: "same-origin"
-                    }
-                );
+    response = await fetch(
+        `/api/news/${editingArticleId}`,
+        {
+            method: "PUT",
 
-            } else {
+            headers: {
+                "Content-Type": "application/json"
+            },
 
-                response = await fetch(
-                    "/api/news",
-                    {
-                        method: "POST",
-                        body: formData,
-                        credentials: "same-origin"
-                    }
-                );
-            }
+            body: JSON.stringify(newsData),
 
+            credentials: "same-origin"
+        }
+    );
+
+} else {
+
+    response = await fetch(
+        "/api/news",
+        {
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify(newsData),
+
+            credentials: "same-origin"
+        }
+    );
+
+}
 
             if (handleUnauthorized(response)) {
                 return;

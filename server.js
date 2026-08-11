@@ -84,7 +84,7 @@ app.set("trust proxy", 1);
 // BODY MIDDLEWARE
 // ======================================================
 
-app.use(express.json());
+app.use(express.json({ limit: "10mb" }));
 
 app.use(
     express.urlencoded({
