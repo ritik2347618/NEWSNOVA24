@@ -2343,3 +2343,28 @@ header,
 
 }
 
+/* ==============================
+   LOGO FIX
+============================== */
+
+header .logo,
+.main-header .logo {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative;
+    z-index: 10000;
+}
+
+header .logo img,
+.main-header .logo img {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    width: 145px !important;
+    height: auto !important;
+    max-width: none !important;
+    object-fit: contain;
+}
+
