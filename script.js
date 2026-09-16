@@ -246,12 +246,12 @@ function hideAllProfiles() {
         document.getElementById("aman");
 
 
-    if (subhashProfile) {
-        subhashProfile.style.display = "none";
+   if (subhashProfile) {
+        subhashProfile.style.setProperty("display", "none", "important");
     }
 
     if (ritikProfile) {
-        ritikProfile.style.display = "none";
+        ritikProfile.style.setProperty("display", "none", "important");
     }
 
     if (amanProfile) {
@@ -268,23 +268,19 @@ function showSubhash() {
 
     hideAllProfiles();
 
-    const subhashProfile =
-        document.getElementById(
-            "subhash"
-        );
+    const subhashProfile = document.getElementById("subhash");
 
     if (!subhashProfile) {
+        console.error("Subhash profile not found");
         return;
     }
 
-    subhashProfile.style.display =
-        "block";
+    subhashProfile.style.setProperty("display", "block", "important");
 
     subhashProfile.scrollIntoView({
         behavior: "smooth",
         block: "start"
     });
-
 }
 
 
@@ -296,24 +292,21 @@ function showRitik() {
 
     hideAllProfiles();
 
-    const ritikProfile =
-        document.getElementById(
-            "ritik"
-        );
+    const ritikProfile = document.getElementById("ritik");
 
     if (!ritikProfile) {
+        console.error("Ritik profile not found");
         return;
     }
 
-    ritikProfile.style.display =
-        "block";
+    ritikProfile.style.setProperty("display", "block", "important");
 
     ritikProfile.scrollIntoView({
         behavior: "smooth",
         block: "start"
     });
-
 }
+
 
 
 // ======================================================
