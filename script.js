@@ -237,51 +237,51 @@ window.addEventListener(
 function hideAllProfiles() {
 
     const abhishekProfile =
-        document.getElementById("abhishek");
+        document.getElementById("subhash");
 
     const ritikProfile =
         document.getElementById("ritik");
 
     const praveenProfile =
-        document.getElementById("praveen");
+        document.getElementById("aman");
 
 
-    if (abhishekProfile) {
-        abhishekProfile.style.display = "none";
+    if (subhashProfile) {
+        subhashProfile.style.display = "none";
     }
 
     if (ritikProfile) {
         ritikProfile.style.display = "none";
     }
 
-    if (praveenProfile) {
-        praveenProfile.style.display = "none";
+    if (amanProfile) {
+        amanProfile.style.display = "none";
     }
 
 }
 
 
 // ======================================================
-// 7. ABHISHEK TIWARI PROFILE
+// 7. SUBHASH KUMAR SINGH PROFILE
 // ======================================================
 
-function showAbhishek() {
+function showSubhash() {
 
     hideAllProfiles();
 
-    const abhishekProfile =
+    const subhashProfile =
         document.getElementById(
-            "abhishek"
+            "subhash"
         );
 
-    if (!abhishekProfile) {
+    if (!subhashProfile) {
         return;
     }
 
-    abhishekProfile.style.display =
+    subhashProfile.style.display =
         "block";
 
-    abhishekProfile.scrollIntoView({
+    subhashProfile.scrollIntoView({
         behavior: "smooth",
         block: "start"
     });
@@ -318,26 +318,26 @@ function showRitik() {
 
 
 // ======================================================
-// 9. PRAVEEN KUMAR GUPTA PROFILE
+// 9. AMAN KUMAR PROFILE
 // ======================================================
 
-function showPraveen() {
+function showAman() {
 
     hideAllProfiles();
 
-    const praveenProfile =
+    const amanProfile =
         document.getElementById(
-            "praveen"
+            "aman"
         );
 
-    if (!praveenProfile) {
+    if (!amanProfile) {
         return;
     }
 
-    praveenProfile.style.display =
+    amanProfile.style.display =
         "block";
 
-    praveenProfile.scrollIntoView({
+    amanProfile.scrollIntoView({
         behavior: "smooth",
         block: "start"
     });
