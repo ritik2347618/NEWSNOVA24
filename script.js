@@ -236,13 +236,13 @@ window.addEventListener(
 
 function hideAllProfiles() {
 
-    const abhishekProfile =
+    const subhashProfile =
         document.getElementById("subhash");
 
     const ritikProfile =
         document.getElementById("ritik");
 
-    const praveenProfile =
+    const amanProfile =
         document.getElementById("aman");
 
 
