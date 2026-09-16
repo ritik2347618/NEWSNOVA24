@@ -255,9 +255,8 @@ function hideAllProfiles() {
     }
 
     if (amanProfile) {
-        amanProfile.style.display = "none";
+        amanProfile.style.setProperty("display", "none", "important");
     }
-
 }
 
 
@@ -325,25 +324,20 @@ function showAman() {
 
     hideAllProfiles();
 
-    const amanProfile =
-        document.getElementById(
-            "aman"
-        );
+    const amanProfile = document.getElementById("aman");
 
     if (!amanProfile) {
+        console.error("Aman profile not found");
         return;
     }
 
-    amanProfile.style.display =
-        "block";
+    amanProfile.style.setProperty("display", "block", "important");
 
     amanProfile.scrollIntoView({
         behavior: "smooth",
         block: "start"
     });
-
 }
-
 
 // ======================================================
 // 10. CONTACT SECTION
